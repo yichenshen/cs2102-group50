@@ -1,4 +1,4 @@
-INSERT INTO `mini`.`song` (`id`, `artist`, `track`, `link`) VALUES
+INSERT INTO song (id, artist, track, link) VALUES
 (1, 'Rin', 'Ljubav/Beichtstuhl', 'https://www.youtube.com/watch?v=MDHJMirQ5PI'),
 (2, 'Jeremih feat. Natasha Mosley', 'F*** U All The Time', 'https://www.youtube.com/watch?v=6-Bq7PCKCJ4'),
 (3, 'Nao', 'In the Morning', 'https://www.youtube.com/watch?v=uuocmqLRgOM'),
