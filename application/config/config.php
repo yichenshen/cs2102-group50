@@ -57,4 +57,4 @@ define('DB_TYPE', 'pgsql');
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'cs2102');
 define('DB_USER', 'postgres');
-define('DB_PASS', '');
+define('DB_PASS', 'postgres');
