@@ -1,9 +1,6 @@
 <?php
 
 /**
- * Class Songs
- * This is a demo Model class.
- *
  * Please note:
  * Don't use the same name for class and method, as this might trigger an (unintended) __construct of the class.
  * This is really weird behaviour, but documented here: http://php.net/manual/en/language.oop5.decon.php
@@ -14,14 +11,11 @@ namespace Mini\Model;
 
 use Mini\Core\Model;
 
-class Song extends Model
+class Project extends Model
 {
-    /**
-     * Get all songs from database
-     */
-    public function getAllSongs()
+    public function getAllProjects()
     {
-        $sql = "SELECT id, artist, track, link FROM song";
+        $sql = "SELECT * FROM projects";
         $query = $this->db->prepare($sql);
         $query->execute();
 
@@ -32,17 +26,6 @@ class Song extends Model
         return $query->fetchAll();
     }
 
-    /**
-     * Add a song to database
-     * TODO put this explanation into readme and remove it from here
-     * Please note that it's not necessary to "clean" our input in any way. With PDO all input is escaped properly
-     * automatically. We also don't use strip_tags() etc. here so we keep the input 100% original (so it's possible
-     * to save HTML and JS to the database, which is a valid use case). Data will only be cleaned when putting it out
-     * in the views (see the views for more info).
-     * @param string $artist Artist
-     * @param string $track Track
-     * @param string $link Link
-     */
     public function addSong($artist, $track, $link)
     {
         $sql = "INSERT INTO song (artist, track, link) VALUES (:artist, :track, :link)";
