@@ -11,10 +11,8 @@ namespace Mini\Model;
 
 use Mini\Core\Model;
 
-class Project extends Model
-{
-    public function getAllProjects()
-    {
+class Project extends Model {
+    public function getAllProjects() {
         $sql = "SELECT * FROM projects";
         $query = $this->db->prepare($sql);
         $query->execute();
@@ -26,11 +24,11 @@ class Project extends Model
         return $query->fetchAll();
     }
 
-    public function addSong($artist, $track, $link)
-    {
-        $sql = "INSERT INTO song (artist, track, link) VALUES (:artist, :track, :link)";
+    public function addProject($owner, $title, $description, $start_date, $end_date, $categories, $amount) {
+        $sql = "INSERT INTO projects (owner, title, description, start_date, end_date, categories, amount) VALUES (:owner, :title, :description, :start_date, :end_date, :categories, :amount)";
         $query = $this->db->prepare($sql);
-        $parameters = array(':artist' => $artist, ':track' => $track, ':link' => $link);
+
+        $parameters = array(':owner' => $owner, ':title' => $title, ':description' => $description, ':start_date' => $start_date, ':end_date' => $end_date, ':categories' => $categories, ':amount' => $amount);
 
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
@@ -38,17 +36,11 @@ class Project extends Model
         $query->execute($parameters);
     }
 
-    /**
-     * Delete a song in the database
-     * Please note: this is just an example! In a real application you would not simply let everybody
-     * add/update/delete stuff!
-     * @param int $song_id Id of song
-     */
-    public function deleteSong($song_id)
+    public function deleteProject($id)
     {
-        $sql = "DELETE FROM song WHERE id = :song_id";
+        $sql = "DELETE FROM song WHERE id = :id";
         $query = $this->db->prepare($sql);
-        $parameters = array(':song_id' => $song_id);
+        $parameters = array(':id' => $id);
 
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
@@ -56,15 +48,11 @@ class Project extends Model
         $query->execute($parameters);
     }
 
-    /**
-     * Get a song from database
-     * @param integer $song_id
-     */
-    public function getSong($song_id)
+    public function getProject($id)
     {
-        $sql = "SELECT id, artist, track, link FROM song WHERE id = :song_id LIMIT 1";
+        $sql = "SELECT * FROM projects WHERE id = :id LIMIT 1";
         $query = $this->db->prepare($sql);
-        $parameters = array(':song_id' => $song_id);
+        $parameters = array(':id' => $id);
 
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
@@ -75,23 +63,11 @@ class Project extends Model
         return $query->fetch();
     }
 
-    /**
-     * Update a song in database
-     * // TODO put this explaination into readme and remove it from here
-     * Please note that it's not necessary to "clean" our input in any way. With PDO all input is escaped properly
-     * automatically. We also don't use strip_tags() etc. here so we keep the input 100% original (so it's possible
-     * to save HTML and JS to the database, which is a valid use case). Data will only be cleaned when putting it out
-     * in the views (see the views for more info).
-     * @param string $artist Artist
-     * @param string $track Track
-     * @param string $link Link
-     * @param int $song_id Id
-     */
-    public function updateSong($artist, $track, $link, $song_id)
-    {
-        $sql = "UPDATE song SET artist = :artist, track = :track, link = :link WHERE id = :song_id";
+    public function updateProject($owner, $title, $description, $start_date, $end_date, $categories, $amount, $id) {
+        $sql = "UPDATE projects SET owner = :owner, title = :title, description = :description, start_date = :start_date, end_date = :end_date, categories = :categories, amount = :amount)";
         $query = $this->db->prepare($sql);
-        $parameters = array(':artist' => $artist, ':track' => $track, ':link' => $link, ':song_id' => $song_id);
+
+        $parameters = array(':owner' => $owner, ':title' => $title, ':description' => $description, ':start_date' => $start_date, ':end_date' => $end_date, ':categories' => $categories, ':amount' => $amount);
 
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
@@ -103,13 +79,13 @@ class Project extends Model
      * Get simple "stats". This is just a simple demo to show
      * how to use more than one model in a controller (see application/controller/songs.php for more)
      */
-    public function getAmountOfSongs()
-    {
-        $sql = "SELECT COUNT(id) AS amount_of_songs FROM song";
-        $query = $this->db->prepare($sql);
-        $query->execute();
-
-        // fetch() is the PDO method that get exactly one result
-        return $query->fetch()->amount_of_songs;
-    }
+    // public function getAmountOfSongs()
+    // {
+    //     $sql = "SELECT COUNT(id) AS amount_of_songs FROM song";
+    //     $query = $this->db->prepare($sql);
+    //     $query->execute();
+    //
+    //     // fetch() is the PDO method that get exactly one result
+    //     return $query->fetch()->amount_of_songs;
+    // }
 }
