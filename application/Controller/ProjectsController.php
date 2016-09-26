@@ -25,9 +25,22 @@ class ProjectsController
 
   public function create()
   {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+      header('Location:' . URL . 'error');
+      return;
     }
+
+    $Project = new Project();
+
+    $title = $_POST['title'];
+    $description = $_POST['description'];
+    $startDate = $_POST['start_date'];
+    $amount = $_POST['amount'];
+
+    //TODO: fill up empty fields.
+    $newID = $Project->addProject(null, $title, $description, $startDate, null, null, $amount);
+
+//    header('Location:' . URL . 'projects/show/' . $newID);
   }
 
   /**
@@ -38,7 +51,8 @@ class ProjectsController
    * the user back to songs/index via the last line: header(...)
    * This is an example of how to handle a POST request.
    */
-  public function addSong()
+  public
+  function addSong()
   {
     // if we have POST data to create a new song entry
     if (isset($_POST["submit_add_song"])) {
@@ -62,7 +76,8 @@ class ProjectsController
    *
    * @param int $song_id Id of the to-delete song
    */
-  public function deleteSong($song_id)
+  public
+  function deleteSong($song_id)
   {
     // if we have an id of a song that should be deleted
     if (isset($song_id)) {
@@ -82,7 +97,8 @@ class ProjectsController
    *
    * @param int $song_id Id of the to-edit song
    */
-  public function editSong($song_id)
+  public
+  function editSong($song_id)
   {
     // if we have an id of a song that should be edited
     if (isset($song_id)) {
@@ -112,7 +128,8 @@ class ProjectsController
    * the user back to songs/index via the last line: header(...)
    * This is an example of how to handle a POST request.
    */
-  public function updateSong()
+  public
+  function updateSong()
   {
     // if we have POST data to create a new song entry
     if (isset($_POST["submit_update_song"])) {
@@ -130,7 +147,8 @@ class ProjectsController
    * AJAX-ACTION: ajaxGetStats
    * TODO documentation
    */
-  public function ajaxGetStats()
+  public
+  function ajaxGetStats()
   {
     // Instance new Model (Song)
     $Song = new Song();

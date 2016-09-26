@@ -34,6 +34,8 @@ class Project extends Model {
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
 
         $query->execute($parameters);
+
+        return $this->db->lastInsertId('projects_id_seq');
     }
 
     public function deleteProject($id)
