@@ -18,7 +18,7 @@ class ProjectsController
 
         // load views. within the views we can echo out $songs and $amount_of_songs easily
         include APP . 'view/_templates/header.php';
-        print_r($projects);
+        include APP . 'view/projects/index.php';
         include APP . 'view/_templates/footer.php';
     }
 

@@ -14,10 +14,9 @@
       <tbody>
         <?php foreach ($projects as $project) { ?>
           <tr>
-            <?php $project->title ?>
-          </tr>
-          <tr>
-            <?php $project->title ?>
+            <td><?php echo htmlspecialchars($project->title) ?></td>
+            <td><?php echo htmlspecialchars($project->description)?></td>
+            <td><?php echo htmlspecialchars($project->start_date)?></td>
           </tr>
         <?php } ?>
       </tbody>
