@@ -45,7 +45,7 @@ class ProjectsController
   }
 
   // POST
-  public function deleteProject($projectId)
+  public function delete($projectId)
   {
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
       header('Location:' . URL . 'error');
