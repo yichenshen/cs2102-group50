@@ -40,7 +40,7 @@ class Project extends Model {
 
     public function deleteProject($id)
     {
-        $sql = "DELETE FROM song WHERE id = :id";
+        $sql = "DELETE FROM projects WHERE id = :id";
         $query = $this->db->prepare($sql);
         $parameters = array(':id' => $id);
 
