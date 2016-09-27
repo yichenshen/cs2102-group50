@@ -77,7 +77,20 @@ class Project extends Model {
         $query->execute($parameters);
     }
 
-    /**
+  public function blankProject()
+  {
+    $project = new \stdClass();
+    $project->title = null;
+    $project->description = null;
+    $project->start_date = null;
+    $project->end_date = null;
+    $project->categories = null;
+    $project->amount = null;
+
+    return $project;
+  }
+
+  /**
      * Get simple "stats". This is just a simple demo to show
      * how to use more than one model in a controller (see application/controller/songs.php for more)
      */
