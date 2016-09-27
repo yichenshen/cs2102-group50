@@ -1,14 +1,9 @@
-<div class="footer">
-  Find <a href="https://github.com/panique/mini3">MINI3 on GitHub</a>.
-  If you like the project, support it by <a href="http://tracking.rackspace.com/SH1ES">using Rackspace</a> as your
-  hoster [affiliate link].
-</div>
-
 <!-- jQuery, loaded in the recommended protocol-less way -->
 <!-- more http://www.paulirish.com/2010/the-protocol-relative-url/ -->
 <script src="<?php echo URL; ?>bower_components/jquery/dist/jquery.min.js"></script>
 
-<script type="text/javascript" src="<?php echo URL; ?>/bower_components/materialize/dist/js/materialize.min.js"></script>
+<script type="text/javascript"
+        src="<?php echo URL; ?>/bower_components/materialize/dist/js/materialize.min.js"></script>
 
 <!-- define the project's URL (to make AJAX calls possible, even when using this in sub-folders etc) -->
 <script>
