@@ -21,6 +21,8 @@
 
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <script src="<?php echo URL; ?>bower_components/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
 <header>
