@@ -52,9 +52,9 @@ class ProjectsController
 
     $title = $_POST['title'];
     $description = $_POST['description'];
-    $startDate = $_POST['start_date'];
-    $endDate = $_POST['end_date'];
-    $amount = $_POST['amount'];
+    $startDate = $_POST['start_date'] ?: date('Y/m/d');
+    $endDate = $_POST['end_date'] ?: date('Y/m/d');
+    $amount = $_POST['amount'] ?: 1;
 
     //TODO: fill up empty fields.
     $newID = $Project->addProject(null, $title, $description, $startDate, $endDate, null, $amount);
