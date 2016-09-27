@@ -12,14 +12,22 @@ class ProjectsController
    */
   public function index()
   {
-    // Instance new Model (Song)
     $Project = new Project();
-    // getting all songs and amount of songs
     $projects = $Project->getAllProjects();
 
     // load views. within the views we can echo out $songs and $amount_of_songs easily
     include APP . 'view/_templates/header.php';
     include APP . 'view/projects/index.php';
+    include APP . 'view/_templates/footer.php';
+  }
+
+  public function newproject()
+  {
+    $Project = new Project();
+    $project = $Project->blankProject();
+
+    include APP . 'view/_templates/header.php';
+    include APP . 'view/projects/new.php';
     include APP . 'view/_templates/footer.php';
   }
 
@@ -36,12 +44,13 @@ class ProjectsController
     $title = $_POST['title'];
     $description = $_POST['description'];
     $startDate = $_POST['start_date'];
+    $endDate = $_POST['end_date'];
     $amount = $_POST['amount'];
 
     //TODO: fill up empty fields.
-    $newID = $Project->addProject(null, $title, $description, $startDate, null, null, $amount);
+    $newID = $Project->addProject(null, $title, $description, $startDate, $endDate, null, $amount);
 
-//    header('Location:' . URL . 'projects/show/' . $newID);
+    header('Location:' . URL . 'projects/');
   }
 
   // POST
