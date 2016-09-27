@@ -1,4 +1,4 @@
-<form action="/projects/create" method="post">
+<form action="<?php echo $url ?>" method="post">
   <div class="row">
     <div class="input-field col s12">
       <input id="title" name="title" type="text" class="validate" value="<?php echo $project->title ?>">
