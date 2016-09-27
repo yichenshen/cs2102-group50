@@ -6,7 +6,7 @@
   <td><?php echo htmlspecialchars($project->amount) ?></td>
   <td>
     <form action="/projects/delete/<?php echo $project->id ?>" method="post">
-      <a class="btn-floating green lighten-1" href="/projects/edit/<?php echo $project->id ?>">
+      <a class="btn-floating light-green" href="/projects/edit/<?php echo $project->id ?>">
         <i class="material-icons">edit</i>
       </a>
       <button class="btn-floating red accent-2" type="submit" name="action">
