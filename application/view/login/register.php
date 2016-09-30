@@ -17,28 +17,33 @@
                 </div>
               <?php } ?>
               <div class="input-field col l10 offset-l1 m12">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="name" name="name" type="text" class="validate"
+                       value="<?php echo isset($name) ? $name : ''; ?>">
+                <label for="name">Name</label>
+              </div>
+              <div class="input-field col l10 offset-l1 m12">
                 <i class="material-icons prefix">email</i>
                 <input id="email" name="email" type="text" class="validate"
                        value="<?php echo isset($email) ? $email : ''; ?>">
                 <label for="email">Email</label>
               </div>
-              <div class="input-field col l10 offset-l1 m12">
+              <div class="input-field col l5 offset-l1 m12">
                 <i class="material-icons prefix">lock</i>
                 <input id="password" name="password" type="password" class="validate">
                 <label for="password">Password</label>
               </div>
-              <div class="input-field col l10 offset-l1 m12">
-                <input type="checkbox" id="remember"
-                       name="remember" <?php echo (isset($remember) && $remember) ? 'checked' : ''; ?>>
-                <label for="remember">Remember Me</label>
+              <div class="input-field col l5 m12">
+                <i class="material-icons prefix">lock_outline</i>
+                <input id="password" name="password" type="password" class="validate">
+                <label for="password">Password Confirmation</label>
               </div>
             </div>
             <br/>
             <div class="card-action">
-              <a class="btn btn-flat btn-large left blue-text text-darken-1" href="/login/register">Sign Up</a>
-              <button class="btn btn-floating btn-large waves-effect waves-light secondary-accent right" type="submit"
+              <button class="btn btn-large btn-large waves-effect waves-light secondary-accent right" type="submit"
                       name="action">
-                <i class="material-icons right">send</i>
+                Sign Up
               </button>
               <br/>
             </div>
@@ -49,3 +54,4 @@
     <div
   </div>
 </div>
+

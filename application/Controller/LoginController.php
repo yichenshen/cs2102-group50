@@ -52,7 +52,14 @@ class LoginController extends ApplicationController
 
   public function register()
   {
+    if ($this->User->loggedIn()) {
+      header('Location:' . URL);
+      return;
+    }
 
+    include APP . 'view/_templates/header.php';
+    include APP . 'view/login/register.php';
+    include APP . 'view/_templates/footer.php';
   }
 
   public function createuser()
