@@ -12,11 +12,19 @@ use Delight\Auth\Auth;
 class User extends Model
 {
 
-  public function register($username, $email, $password)
+  private $auth = null;
+
+  public function __construct()
   {
-    $auth = new Auth($this->db);
+    parent::__construct();
+
+    $this->auth = new Auth($this->db);
+  }
+
+  public function register($email, $password)
+  {
     try {
-      $userId = $auth->register($email, $password, $username, null);
+      $userId = $auth->register($email, $password, null, null);
     } catch (InvalidEmailException $e) {
       // invalid email address
     } catch (InvalidPasswordException $e) {
@@ -28,11 +36,10 @@ class User extends Model
     }
   }
 
-  public function login($username, $password, $persist)
+  public function login($email, $password, $persist)
   {
     try {
-      $auth = new Auth($this->db);
-      $auth->login($username, $password, $persist);
+      $auth->login($email, $password, $persist);
     } catch (InvalidEmailException $e) {
       // wrong email address
     } catch (InvalidPasswordException $e) {
@@ -40,5 +47,10 @@ class User extends Model
     } catch (TooManyRequestsException $e) {
       // too many requests
     }
+  }
+
+  public function loggedIn()
+  {
+    return $auth->isLoggedIn();
   }
 }
