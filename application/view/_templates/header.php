@@ -14,7 +14,7 @@
   <link href="<?php echo URL; ?>css/style.css" rel="stylesheet">
 
   <!--Import Google Icon Font-->
-  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="<?php echo URL; ?>bower_components/material-design-icons-iconfont/dist/material-design-icons.css" rel="stylesheet">
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet"
         href="<?php echo URL; ?>bower_components/materialize/dist/css/materialize.min.css" media="screen,projection"/>
@@ -26,7 +26,7 @@
 </head>
 <body>
 <header>
-  <nav class="light-blue lighten-1" role="navigation">
+  <nav class="main-500" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Crowd</a>
       <ul class="right hide-on-med-and-down">
         <li><a href="/projects">Projects</a></li>
