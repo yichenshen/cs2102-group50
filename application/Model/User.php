@@ -49,6 +49,11 @@ class User extends Model
     }
   }
 
+  public function logout()
+  {
+    $this->auth->logout();
+  }
+
   public function loggedIn()
   {
     return $this->auth->isLoggedIn();
