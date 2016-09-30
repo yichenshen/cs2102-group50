@@ -10,8 +10,15 @@
           </div>
           <div class="card-content">
             <div class="row">
+              <?php if (isset($error)) { ?>
+                <div class="input-field col l10 offset-l1 m12">
+                  <?php include APP . 'view/error/_card.php' ?>
+                  <br />
+                </div>
+              <?php } ?>
               <div class="input-field col l10 offset-l1 m12">
-                <input id="email" name="email" type="text" class="validate">
+                <input id="email" name="email" type="text" class="validate"
+                       value="<?php echo isset($email) ? $email : ''; ?>">
                 <label for="email">Email</label>
               </div>
               <div class="input-field col l10 offset-l1 m12">
@@ -19,17 +26,19 @@
                 <label for="password">Password</label>
               </div>
               <div class="input-field col l10 offset-l1 m12">
-                <input type="checkbox" id="remember" name="remember">
+                <input type="checkbox" id="remember"
+                       name="remember" <?php echo (isset($remember) && $remember) ? 'checked' : ''; ?>>
                 <label for="remember">Remember Me</label>
               </div>
             </div>
-            <br />
+            <br/>
             <div class="card-action">
-              <a class="btn btn-flat btn-large left blue-text text-darken-1">Sign Up</a>
-              <button class="btn btn-floating btn-large waves-effect waves-light secondary-accent right" type="submit" name="action">
-                  <i class="material-icons right">send</i>
+              <a class="btn btn-flat btn-large left blue-text text-darken-1" href="/login/register">Sign Up</a>
+              <button class="btn btn-floating btn-large waves-effect waves-light secondary-accent right" type="submit"
+                      name="action">
+                <i class="material-icons right">send</i>
               </button>
-              <br />
+              <br/>
             </div>
           </div>
         </div>

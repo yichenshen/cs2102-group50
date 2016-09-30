@@ -8,6 +8,7 @@ use Delight\Auth\TooManyRequestsException;
 use Delight\Auth\UserAlreadyExistsException;
 use Mini\Core\Model;
 use Delight\Auth\Auth;
+use Mini\Exception\LoginException;
 
 class User extends Model
 {
@@ -26,13 +27,13 @@ class User extends Model
     try {
       $userId = $auth->register($email, $password, null, null);
     } catch (InvalidEmailException $e) {
-      // invalid email address
+      throw new LoginException("Email/Password is invalid! Please try again");
     } catch (InvalidPasswordException $e) {
-      // invalid password
+      throw new LoginException("Email/Password is invalid! Please try again");
+    } catch (TooManyRequestsException $e) {
+      throw new LoginException("Login tries exceeded, try again later.");
     } catch (UserAlreadyExistsException $e) {
       // user already exists
-    } catch (TooManyRequestsException $e) {
-      // too many requests
     }
   }
 
@@ -41,11 +42,11 @@ class User extends Model
     try {
       $this->auth->login($email, $password, $persist);
     } catch (InvalidEmailException $e) {
-      // wrong email address
+      throw new LoginException("Email/Password is invalid! Please try again");
     } catch (InvalidPasswordException $e) {
-      // wrong password
+      throw new LoginException("Email/Password is invalid! Please try again");
     } catch (TooManyRequestsException $e) {
-      // too many requests
+      throw new LoginException("Login tries exceeded, try again later.");
     }
   }
 

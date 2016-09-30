@@ -2,6 +2,7 @@
 
 namespace Mini\Controller;
 
+use Mini\Exception\LoginException;
 use Mini\Model\User;
 
 class LoginController extends ApplicationController
@@ -28,9 +29,16 @@ class LoginController extends ApplicationController
 
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $remember = $_POST['remember'];
+    $remember = isset($_POST['remember']);
 
-    $this->User->login($email, $password, $remember);
+    try {
+      $this->User->login($email, $password, $remember);
+      header('Location: ' . URL);
+    } catch (LoginException $error) {
+      include APP . 'view/_templates/header.php';
+      include APP . 'view/login/index.php';
+      include APP . 'view/_templates/footer.php';
+    }
   }
 
   public function logout()
