@@ -2,12 +2,17 @@
 
 namespace Mini\Controller;
 
-class LoginController
+use Mini\Model\User;
+
+class LoginController extends ApplicationController
 {
 
   public function login()
   {
-
+    if ($this->User->loggedIn()) {
+      header('Location:' . URL);
+      return;
+    }
   }
 
   public function logout()

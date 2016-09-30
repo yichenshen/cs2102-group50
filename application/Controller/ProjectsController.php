@@ -4,7 +4,7 @@ namespace Mini\Controller;
 
 use Mini\Model\Project;
 
-class ProjectsController
+class ProjectsController extends ApplicationController
 {
   public function index()
   {
