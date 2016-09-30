@@ -39,7 +39,7 @@ class User extends Model
   public function login($email, $password, $persist)
   {
     try {
-      $auth->login($email, $password, $persist);
+      $this->auth->login($email, $password, $persist);
     } catch (InvalidEmailException $e) {
       // wrong email address
     } catch (InvalidPasswordException $e) {
@@ -51,6 +51,6 @@ class User extends Model
 
   public function loggedIn()
   {
-    return $auth->isLoggedIn();
+    return $this->auth->isLoggedIn();
   }
 }
