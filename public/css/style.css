@@ -1,11 +1,15 @@
-.main-500 {
+.primary-500 {
     background-color: #ffc107 !important;
 }
 
-.main-300 {
+.primary-300 {
     background-color: #FFD54F !important;
 }
 
-.main-700 {
+.primary-700 {
     background-color: #FFA000 !important;
+}
+
+.secondary-accent {
+    background-color: #448AFF !important;
 }

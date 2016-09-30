@@ -2,13 +2,13 @@
   <br/>
   <div class="row">
     <div class="col l8 offset-l2 m12">
-      <div class="card">
-        <div class="card-image main-700 darken-2">
-          <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" height="140" alt=""/>
-          <span class="card-title"><h3>Welcome back!</h3></span>
-        </div>
-        <div class="card-content">
-          <form action="/login/login" method="post">
+      <form action="/login/login" method="post">
+        <div class="card">
+          <div class="card-image primary-700 darken-2">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" height="140" alt=""/>
+            <span class="card-title"><h3>Welcome back!</h3></span>
+          </div>
+          <div class="card-content">
             <div class="row">
               <div class="input-field col s12">
                 <input id="email" name="email" type="text" class="validate">
@@ -22,10 +22,13 @@
                 <input type="checkbox" id="remember" name="remember">
                 <label for="remember">Remember Me</label>
               </div>
+              <button class="btn btn-floating btn-large secondary-accent right">
+                <i class="material-icons">send</i>
+              </button>
             </div>
-          </form>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </div>
