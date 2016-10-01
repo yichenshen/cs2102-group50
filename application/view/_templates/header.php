@@ -26,7 +26,7 @@
 </head>
 <body>
 <header>
-  <nav class="primary-500" role="navigation">
+  <nav class="primary-700" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Crowd</a>
       <ul class="right hide-on-med-and-down">
         <li><a href="/projects">Projects</a></li>
