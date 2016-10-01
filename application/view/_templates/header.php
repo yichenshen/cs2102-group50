@@ -14,7 +14,8 @@
   <link href="<?php echo URL; ?>css/style.css" rel="stylesheet">
 
   <!--Import Google Icon Font-->
-  <link href="<?php echo URL; ?>bower_components/material-design-icons-iconfont/dist/material-design-icons.css" rel="stylesheet">
+  <link href="<?php echo URL; ?>bower_components/material-design-icons-iconfont/dist/material-design-icons.css"
+        rel="stylesheet">
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet"
         href="<?php echo URL; ?>bower_components/materialize/dist/css/materialize.min.css" media="screen,projection"/>
@@ -27,9 +28,14 @@
 <body>
 <header>
   <nav class="primary-700" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Crowd</a>
+    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">KACHING</a>
       <ul class="right hide-on-med-and-down">
         <li><a href="/projects">Projects</a></li>
+        <?php if (!$this->User->loggedIn()) { ?>
+          <li><a href="/login">Login</a></li>
+        <?php } else { ?>
+          <li><a href="/login/logout">Logout</a></li>
+        <?php } ?>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
