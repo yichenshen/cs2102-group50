@@ -10,6 +10,22 @@
     background-color: #FFA000 !important;
 }
 
+.primary-accent-dark {
+    background-color: #FFAB00 !important;
+}
+
+.secondary-300 {
+    background-color: #64B5F6 !important;
+}
+
+.secondary-500 {
+    background-color: #2196F3 !important;
+}
+
+.secondary-700 {
+    background-color: #1976D2 !important;
+}
+
 .secondary-accent {
     background-color: #448AFF !important;
 }
