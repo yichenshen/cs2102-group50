@@ -9,6 +9,7 @@ use Delight\Auth\UserAlreadyExistsException;
 use Mini\Core\Model;
 use Delight\Auth\Auth;
 use Mini\Exception\LoginException;
+use Mini\Exception\SignUpException;
 
 class User extends Model
 {
@@ -22,18 +23,23 @@ class User extends Model
     $this->auth = new Auth($this->db);
   }
 
-  public function register($email, $password)
+  //TODO enter the name later
+  public function register($name, $email, $password, $password_confirmation)
   {
+    if ($password !== $password_confirmation) {
+      throw new SignUpException("Password does not match confirmation!");
+    }
+
     try {
-      $userId = $auth->register($email, $password, null, null);
+      $userId = $this->auth->register($email, $password, null);
     } catch (InvalidEmailException $e) {
-      throw new LoginException("Email/Password is invalid! Please try again");
+      throw new SignUpException("Email is invalid! Please use a proper email.");
     } catch (InvalidPasswordException $e) {
-      throw new LoginException("Email/Password is invalid! Please try again");
+      throw new SignUpException("Email/Password is invalid! Please try again");
     } catch (TooManyRequestsException $e) {
-      throw new LoginException("Login tries exceeded, try again later.");
+      throw new SignUpException("Login tries exceeded, try again later.");
     } catch (UserAlreadyExistsException $e) {
-      // user already exists
+      throw new SignUpException("Email has already been taken.");
     }
   }
 
