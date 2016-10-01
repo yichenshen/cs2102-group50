@@ -29,14 +29,29 @@
 <header>
   <nav class="primary-700" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">KACHING</a>
+
       <ul class="right hide-on-med-and-down">
-        <li><a href="/projects">Projects</a></li>
+        <li><a href="/projects">Browse</a></li>
         <?php if (!$this->User->loggedIn()) { ?>
           <li><a href="/login">Login</a></li>
         <?php } else { ?>
           <li><a href="/login/logout">Logout</a></li>
         <?php } ?>
       </ul>
+
+      <div class="container">
+        <nav class="z-depth-0 center primary-700">
+          <div class="nav-wrapper">
+            <form action="/project/search" method="get">
+              <div class="input-field">
+                <input id="search" type="search" required placeholder="Search Projects">
+                <label for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+              </div>
+            </form>
+          </div>
+        </nav>
+      </div>
 
       <ul id="nav-mobile" class="side-nav">
       </ul>
