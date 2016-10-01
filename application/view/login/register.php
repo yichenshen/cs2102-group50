@@ -2,7 +2,7 @@
   <br/>
   <div class="row">
     <div class="col l8 offset-l2 m12">
-      <form action="/login/login" method="post">
+      <form action="/login/createuser" method="post">
         <div class="card">
           <div class="card-image primary-700 darken-2">
             <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" height="130"/>
@@ -24,7 +24,7 @@
               </div>
               <div class="input-field col l10 offset-l1 m12">
                 <i class="material-icons prefix">email</i>
-                <input id="email" name="email" type="text" class="validate"
+                <input id="email" name="email" type="email" class="validate"
                        value="<?php echo isset($email) ? $email : ''; ?>">
                 <label for="email">Email</label>
               </div>
@@ -35,8 +35,8 @@
               </div>
               <div class="input-field col l5 m12">
                 <i class="material-icons prefix">lock_outline</i>
-                <input id="password" name="password" type="password" class="validate">
-                <label for="password">Password Confirmation</label>
+                <input id="password_confirm" name="password_confirm" type="password" class="validate">
+                <label for="password_confirm">Password Confirmation</label>
               </div>
             </div>
             <br/>

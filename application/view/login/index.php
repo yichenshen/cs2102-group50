@@ -18,7 +18,7 @@
               <?php } ?>
               <div class="input-field col l10 offset-l1 m12">
                 <i class="material-icons prefix">email</i>
-                <input id="email" name="email" type="text" class="validate"
+                <input id="email" name="email" type="email" class="validate"
                        value="<?php echo isset($email) ? $email : ''; ?>">
                 <label for="email">Email</label>
               </div>
