@@ -205,7 +205,7 @@ class Auth {
 
 		$newUserId = (int) $this->db->getLastInsertId();
 
-		if ($verified === 0) {
+		if ($verified === true) {
 			$this->createConfirmationRequest($email, $callback);
 		}
 
@@ -289,7 +289,7 @@ class Auth {
 					$this->updatePassword($userData['id'], $password);
 				}
 
-				if ($userData['verified'] === 1) {
+				if ($userData['verified'] === true) {
 					$this->onLoginSuccessful($userData['id'], $email, $userData['username'], false);
 
 					if ($remember) {
@@ -563,7 +563,7 @@ class Auth {
 					try {
 						$this->db->update(
 							'users',
-							[ 'verified' => 1 ],
+							[ 'verified' => true ],
 							[ 'email' => $confirmationData['email'] ]
 						);
 					}
