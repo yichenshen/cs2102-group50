@@ -27,6 +27,27 @@ class Funding extends Model
     return $query->fetch();
   }
 
+  //TODO check for prescene of project
+  public function addFunding($projectId, $uid, $amount)
+  {
+    $sql = "INSERT INTO fundings (projects_id, funder_id, amount) VALUES (:pid, :uid, :amount)";
+    $query = $this->db->prepare($sql);
+
+    $parameters = array(':pid' => $projectId, ':uid' => $uid, ':amount' => $amount);
+    $query->execute($parameters);
+
+    return $this->db->lastInsertId('fundings_id_seq');
+  }
+
+  public function deleteFunding($id)
+  {
+    $sql = "DELETE FROM fundings WHERE id = :id";
+    $query = $this->db->prepare($sql);
+    $parameters = array(':id' => $id);
+
+    $query->execute($parameters);
+  }
+
   public function blankFunding()
   {
     $funding = new \stdClass();
