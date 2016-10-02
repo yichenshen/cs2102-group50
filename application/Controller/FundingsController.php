@@ -6,9 +6,9 @@ use Mini\Model\Funding;
 
 class FundingsController extends ApplicationController
 {
-  public function newfunding($project_id)
+  public function newfunding($projectId)
   {
-    if (!$this->User->loggedIn() || !isset($project_id)) {
+    if (!$this->User->loggedIn() || !isset($projectId)) {
       header('Location: ' . URL);
     }
 
@@ -18,6 +18,23 @@ class FundingsController extends ApplicationController
     include APP . 'view/_templates/header.php';
     include APP . 'view/fundings/new.php';
     include APP . 'view/_templates/footer.php';
+  }
+
+  public function create($projectId)
+  {
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+      header('Location:' . URL . 'error');
+      return;
+    }
+
+    $Funding = new Funding();
+
+    $amount = $_POST['amount'];
+    $uid = $this->User->currentUserId();
+
+    $newID = $Funding->addFunding($projectId, $uid, $amount);
+
+    header('Location:' . URL . 'projects/');
   }
 }
 
