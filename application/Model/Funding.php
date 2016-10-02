@@ -26,4 +26,12 @@ class Funding extends Model
     $query->execute($parameters);
     return $query->fetch();
   }
+
+  public function blankFunding()
+  {
+    $funding = new \stdClass();
+    $funding->amount = 5.0;
+
+    return $funding;
+  }
 }
