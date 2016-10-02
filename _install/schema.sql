@@ -62,7 +62,7 @@ CREATE TABLE projects (
 
 CREATE TABLE fundings (
   id     SERIAL PRIMARY KEY,
-  p_id   INT REFERENCES projects (id),
-  funder INT REFERENCES users (id),
+  project_id   INT REFERENCES projects (id),
+  funder_id INT REFERENCES users (id),
   amount FLOAT NOT NULL CHECK (amount > 0)
 );
