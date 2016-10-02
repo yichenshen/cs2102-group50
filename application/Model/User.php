@@ -65,4 +65,8 @@ class User extends Model
   {
     return $this->auth->isLoggedIn();
   }
+
+  public function currentUserId(){
+    return $this->auth->getUserId();
+  }
 }
