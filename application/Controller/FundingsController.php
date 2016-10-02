@@ -2,12 +2,17 @@
 
 namespace Mini\Controller;
 
-class FundingsController
+class FundingsController extends ApplicationController
 {
-  public function index($project_id)
+  public function newfunding($project_id)
   {
-    if (!$this->User->loggedIn()) {
+    if (!$this->User->loggedIn() || !isset($project_id)) {
       header('Location: ' . URL);
     }
+
+    include APP . 'view/_templates/header.php';
+    include APP . 'view/fundings/new.php';
+    include APP . 'view/_templates/footer.php';
   }
 }
+
