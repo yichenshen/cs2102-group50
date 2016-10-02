@@ -6,7 +6,7 @@
   <td><?php echo htmlspecialchars($project->amount) ?></td>
   <td>
     <form action="/projects/delete/<?php echo $project->id ?>" method="post">
-      <a class="btn-floating amber accent-3" href="/fundings/<?php echo $project->id ?>">
+      <a class="btn-floating primary-accent" href="/fundings/<?php echo $project->id ?>">
         <i class="material-icons">attach_money</i>
       </a>
       <a class="btn-floating light-green" href="/projects/edit/<?php echo $project->id ?>">
