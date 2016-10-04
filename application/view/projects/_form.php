@@ -1,4 +1,4 @@
-<form action="<?php echo $url ?>" method="post">
+<form action="<?php echo $url ?>" method="post" enctype="multipart/form-data">
   <div class="row">
     <div class="input-field col s12">
       <input id="title" name="title" type="text" class="validate" value="<?php echo $project->title ?>">
@@ -22,6 +22,9 @@
     <input id="amount" name="amount" type="number" class="validate" value="<?php echo $project->amount ?>">
     <label for="amount">Target Funding (SGD)</label>
   </div>
+
+  Select image to upload:
+  <input type="file" name="fileToUpload" id="fileToUpload">
   <button type="submit" class="btn right light-blue lighten-1">Submit</button>
 </form>
 
