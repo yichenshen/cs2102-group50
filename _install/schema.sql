@@ -50,19 +50,20 @@ CREATE TABLE users_throttling (
 );
 
 CREATE TABLE projects (
-  id          SERIAL PRIMARY KEY,
-  owner       INT REFERENCES users (id),
-  title       TEXT  NOT NULL,
-  description TEXT,
-  start_date  DATE  NOT NULL,
-  end_date    DATE,
-  categories  TEXT,
-  amount      FLOAT NOT NULL CHECK (amount > 0)
+  id            SERIAL PRIMARY KEY,
+  owner         INT REFERENCES users (id),
+  title         TEXT  NOT NULL,
+  description   TEXT,
+  start_date    DATE  NOT NULL,
+  end_date      DATE,
+  categories    TEXT,
+  display_image TEXT,
+  amount        FLOAT NOT NULL CHECK (amount > 0)
 );
 
 CREATE TABLE fundings (
-  id     SERIAL PRIMARY KEY,
-  project_id   INT REFERENCES projects (id),
-  funder_id INT REFERENCES users (id),
-  amount FLOAT NOT NULL CHECK (amount > 0)
+  id         SERIAL PRIMARY KEY,
+  project_id INT REFERENCES projects (id),
+  funder_id  INT REFERENCES users (id),
+  amount     FLOAT NOT NULL CHECK (amount > 0)
 );
