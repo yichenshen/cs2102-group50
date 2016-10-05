@@ -45,7 +45,6 @@ class ProjectsController extends ApplicationController
       return;
     }
 
-    $this->uploadFile();
 
     $Project = new Project();
 
@@ -55,8 +54,10 @@ class ProjectsController extends ApplicationController
     $endDate = $_POST['end_date'] ?: date('Y/m/d');
     $amount = $_POST['amount'] ?: 1;
 
+    $displayPic = $this->uploadFile();
+
     //TODO: fill up empty fields.
-    $newID = $Project->addProject(null, $title, $description, $startDate, $endDate, null, $amount);
+    $newID = $Project->addProject(null, $title, $description, $startDate, $endDate, null, $amount, $displayPic);
 
     header('Location:' . URL . 'projects/');
   }
@@ -98,20 +99,16 @@ class ProjectsController extends ApplicationController
     header('location: ' . URL . 'projects');
   }
 
-  private function uploadFile()
+  private function uploadFile($projectId)
   {
-    $target_dir = "uploads/12343/";
-    $target_file = $target_dir . $_FILES["fileToUpload"]["name"];
+    $target_dir = "uploads/" . $projectId . "/";
+    $target_file = $target_dir . $_FILES["displayPic"]["name"];
     $uploadOk = 1;
     $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
-// Check if image file is a actual image or fake image
-    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-    if ($check !== false) {
-      echo "File is an image - " . $check["mime"] . ".";
-      $uploadOk = 1;
-    } else {
-      echo "File is not an image.";
-      $uploadOk = 0;
+
+    $check = getimagesize($_FILES["displayPic"]["tmp_name"]);
+    if (!$check) {
+      return null;
     }
 
     if (!is_dir($target_dir) && !mkdir($target_dir)){
@@ -119,7 +116,7 @@ class ProjectsController extends ApplicationController
     }
 
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-      echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+      return $target_file;
     } else {
       echo "Sorry, there was an error uploading your file.";
     }

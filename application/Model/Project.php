@@ -24,11 +24,11 @@ class Project extends Model {
         return $query->fetchAll();
     }
 
-    public function addProject($owner, $title, $description, $start_date, $end_date, $categories, $amount) {
-        $sql = "INSERT INTO projects (owner, title, description, start_date, end_date, categories, amount) VALUES (:owner, :title, :description, :start_date, :end_date, :categories, :amount)";
+    public function addProject($owner, $title, $description, $startDate, $endDate, $categories, $amount, $displayPic) {
+        $sql = "INSERT INTO projects (owner, title, description, start_date, end_date, categories, amount, display_image) VALUES (:owner, :title, :description, :startDate, :endDate, :categories, :amount, :displayPic)";
         $query = $this->db->prepare($sql);
 
-        $parameters = array(':owner' => $owner, ':title' => $title, ':description' => $description, ':start_date' => $start_date, ':end_date' => $end_date, ':categories' => $categories, ':amount' => $amount);
+        $parameters = array(':owner' => $owner, ':title' => $title, ':description' => $description, ':startDate' => $startDate, ':endDate' => $endDate, ':categories' => $categories, ':amount' => $amount, ':displayPic' => $displayPic);
 
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
