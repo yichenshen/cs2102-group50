@@ -4,6 +4,15 @@
       <input id="title" name="title" type="text" class="validate" value="<?php echo $project->title ?>">
       <label for="title">Project Title</label>
     </div>
+    <div class="file-field input-field col s12">
+      <div class="btn secondary-accent">
+        <span>Display Image</span>
+        <input type="file" name="displayPic" id="displayPic" accept="image/*">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+    </div>
     <div class="input-field col s12">
       <textarea id="description" name="description"
                 class="materialize-textarea"><?php echo $project->description ?></textarea>
@@ -23,9 +32,7 @@
     <label for="amount">Target Funding (SGD)</label>
   </div>
 
-  Select image to upload:
-  <input type="file" name="fileToUpload" id="fileToUpload">
-  <button type="submit" class="btn right light-blue lighten-1">Submit</button>
+  <button type="submit" class="btn right secondary2-accent">Submit</button>
 </form>
 
 <script src="<?php echo URL; ?>js/project.js"></script>
