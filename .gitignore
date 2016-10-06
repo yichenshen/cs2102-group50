@@ -1,3 +1,5 @@
 application/config/config.php
 .idea/
 mini3.iml
+
+public/uploads/*
