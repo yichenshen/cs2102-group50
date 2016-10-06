@@ -7,8 +7,4 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Mini\\' => array($baseDir . '/application'),
-    'Delight\\Http\\' => array($vendorDir . '/delight-im/http/src'),
-    'Delight\\Db\\' => array($vendorDir . '/delight-im/db/src'),
-    'Delight\\Cookie\\' => array($vendorDir . '/delight-im/cookie/src'),
-    'Delight\\Auth\\' => array($vendorDir . '/delight-im/auth/src'),
 );

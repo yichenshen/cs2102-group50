@@ -14,9 +14,6 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {
-        "delight-im/auth": "^4.0"
-    },
     "autoload":
     {
         "psr-4":
