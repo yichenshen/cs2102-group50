@@ -54,10 +54,10 @@ class ProjectsController extends ApplicationController
     $endDate = $_POST['end_date'] ?: date('Y/m/d');
     $amount = $_POST['amount'] ?: 1;
 
-    $displayPic = $this->uploadFile();
-
     //TODO: fill up empty fields.
-    $newID = $Project->addProject(null, $title, $description, $startDate, $endDate, null, $amount, $displayPic);
+    $newID = $Project->addProject(null, $title, $description, $startDate, $endDate, null, $amount);
+    $displayPic = $this->uploadFile($newID);
+    $Project->changeDisplay($newID, $displayPic);
 
     header('Location:' . URL . 'projects/');
   }
@@ -106,8 +106,11 @@ class ProjectsController extends ApplicationController
     $uploadOk = 1;
     $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
 
+    echo $_FILES["displayPic"]['error'];
+
     $check = getimagesize($_FILES["displayPic"]["tmp_name"]);
-    if (!$check) {
+
+    if (empty($check)) {
       return null;
     }
 
@@ -115,7 +118,7 @@ class ProjectsController extends ApplicationController
       die("Error creating folder $target_dir");
     }
 
-    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+    if (move_uploaded_file($_FILES["displayPic"]["tmp_name"], $target_file)) {
       return $target_file;
     } else {
       echo "Sorry, there was an error uploading your file.";

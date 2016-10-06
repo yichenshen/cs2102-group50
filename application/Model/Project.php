@@ -11,71 +11,88 @@ namespace Mini\Model;
 
 use Mini\Core\Model;
 
-class Project extends Model {
-    public function getAllProjects() {
-        $sql = "SELECT * FROM projects";
-        $query = $this->db->prepare($sql);
-        $query->execute();
+class Project extends Model
+{
+  public function getAllProjects()
+  {
+    $sql = "SELECT * FROM projects";
+    $query = $this->db->prepare($sql);
+    $query->execute();
 
-        // fetchAll() is the PDO method that gets all result rows, here in object-style because we defined this in
-        // core/controller.php! If you prefer to get an associative array as the result, then do
-        // $query->fetchAll(PDO::FETCH_ASSOC); or change core/controller.php's PDO options to
-        // $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ...
-        return $query->fetchAll();
-    }
+    // fetchAll() is the PDO method that gets all result rows, here in object-style because we defined this in
+    // core/controller.php! If you prefer to get an associative array as the result, then do
+    // $query->fetchAll(PDO::FETCH_ASSOC); or change core/controller.php's PDO options to
+    // $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ...
+    return $query->fetchAll();
+  }
 
-    public function addProject($owner, $title, $description, $startDate, $endDate, $categories, $amount, $displayPic) {
-        $sql = "INSERT INTO projects (owner, title, description, start_date, end_date, categories, amount, display_image) VALUES (:owner, :title, :description, :startDate, :endDate, :categories, :amount, :displayPic)";
-        $query = $this->db->prepare($sql);
+  public function addProject($owner, $title, $description, $startDate, $endDate, $categories, $amount)
+  {
+    $sql = "INSERT INTO projects (owner, title, description, start_date, end_date, categories, amount) VALUES (:owner, :title, :description, :startDate, :endDate, :categories, :amount)";
+    $query = $this->db->prepare($sql);
 
-        $parameters = array(':owner' => $owner, ':title' => $title, ':description' => $description, ':startDate' => $startDate, ':endDate' => $endDate, ':categories' => $categories, ':amount' => $amount, ':displayPic' => $displayPic);
+    $parameters = array(':owner' => $owner, ':title' => $title, ':description' => $description, ':startDate' => $startDate, ':endDate' => $endDate, ':categories' => $categories, ':amount' => $amount);
 
-        // useful for debugging: you can see the SQL behind above construction by using:
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
+    // useful for debugging: you can see the SQL behind above construction by using:
+    // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
 
-        $query->execute($parameters);
+    $query->execute($parameters);
 
-        return $this->db->lastInsertId('projects_id_seq');
-    }
+    return $this->db->lastInsertId('projects_id_seq');
+  }
 
-    public function deleteProject($id)
-    {
-        $sql = "DELETE FROM projects WHERE id = :id";
-        $query = $this->db->prepare($sql);
-        $parameters = array(':id' => $id);
+  public function changeDisplay($projectId, $filePath)
+  {
+    $sql = "UPDATE projects SET display_image = :file WHERE id = :id";
+    $query = $this->db->prepare($sql);
 
-        // useful for debugging: you can see the SQL behind above construction by using:
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
+    $parameters = array(':file' => $filePath, ':id' => $projectId);
 
-        $query->execute($parameters);
-    }
+    // useful for debugging: you can see the SQL behind above construction by using:
+    // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
 
-    public function getProject($id)
-    {
-        $sql = "SELECT * FROM projects WHERE id = :id LIMIT 1";
-        $query = $this->db->prepare($sql);
-        $parameters = array(':id' => $id);
+    $query->execute($parameters);
+  }
 
-        // useful for debugging: you can see the SQL behind above construction by using:
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
+  public function deleteProject($id)
+  {
+    $sql = "DELETE FROM projects WHERE id = :id";
+    $query = $this->db->prepare($sql);
+    $parameters = array(':id' => $id);
 
-        $query->execute($parameters);
+    // useful for debugging: you can see the SQL behind above construction by using:
+    // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
 
-        // fetch() is the PDO method that get exactly one result
-        return $query->fetch();
-    }
+    $query->execute($parameters);
+  }
 
-    public function updateProject($owner, $title, $description, $start_date, $end_date, $categories, $amount, $id) {
-        $sql = "UPDATE projects SET owner = :owner, title = :title, description = :description, start_date = :start_date, end_date = :end_date, categories = :categories, amount = :amount WHERE id = :id";
-        $query = $this->db->prepare($sql);
+  public function getProject($id)
+  {
+    $sql = "SELECT * FROM projects WHERE id = :id LIMIT 1";
+    $query = $this->db->prepare($sql);
+    $parameters = array(':id' => $id);
 
-        $parameters = array(':owner' => $owner, ':title' => $title, ':description' => $description, ':start_date' => $start_date, ':end_date' => $end_date, ':categories' => $categories, ':amount' => $amount, ':id' => $id);
+    // useful for debugging: you can see the SQL behind above construction by using:
+    // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
 
-        // useful for debugging: you can see the SQL behind above construction by using:
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
+    $query->execute($parameters);
 
-        $query->execute($parameters);
-    }
+    // fetch() is the PDO method that get exactly one result
+    return $query->fetch();
+  }
+
+  public function updateProject($owner, $title, $description, $start_date, $end_date, $categories, $amount, $id)
+  {
+    $sql = "UPDATE projects SET owner = :owner, title = :title, description = :description, start_date = :start_date, end_date = :end_date, categories = :categories, amount = :amount WHERE id = :id";
+    $query = $this->db->prepare($sql);
+
+    $parameters = array(':owner' => $owner, ':title' => $title, ':description' => $description, ':start_date' => $start_date, ':end_date' => $end_date, ':categories' => $categories, ':amount' => $amount, ':id' => $id);
+
+    // useful for debugging: you can see the SQL behind above construction by using:
+    // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
+
+    $query->execute($parameters);
+  }
 
   public function blankProject()
   {
@@ -91,16 +108,16 @@ class Project extends Model {
   }
 
   /**
-     * Get simple "stats". This is just a simple demo to show
-     * how to use more than one model in a controller (see application/controller/songs.php for more)
-     */
-    // public function getAmountOfSongs()
-    // {
-    //     $sql = "SELECT COUNT(id) AS amount_of_songs FROM song";
-    //     $query = $this->db->prepare($sql);
-    //     $query->execute();
-    //
-    //     // fetch() is the PDO method that get exactly one result
-    //     return $query->fetch()->amount_of_songs;
-    // }
+   * Get simple "stats". This is just a simple demo to show
+   * how to use more than one model in a controller (see application/controller/songs.php for more)
+   */
+  // public function getAmountOfSongs()
+  // {
+  //     $sql = "SELECT COUNT(id) AS amount_of_songs FROM song";
+  //     $query = $this->db->prepare($sql);
+  //     $query->execute();
+  //
+  //     // fetch() is the PDO method that get exactly one result
+  //     return $query->fetch()->amount_of_songs;
+  // }
 }
