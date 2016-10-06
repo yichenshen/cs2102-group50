@@ -36,18 +36,19 @@ class User extends Model
     $query = $this->db->prepare($sql);
     $parameters = array(':email' => $email, ':name'=>$name, ':password'=>$password);
 
-    if($query->execute($parameters)){
+    if(!$query->execute($parameters)){
       throw new SignUpException("Email has already been taken.");
     }
   }
 
   public function login($email, $password)
   {
-    $sql = "SELECT name, email, password, admin FROM users WHERE email = :email";
+    $sql = "SELECT name, email, password, is_admin FROM users WHERE email = :email";
     $query = $this->db->prepare($sql);
     $parameters = array(':email' => $email);
 
-    $account = $query->fetch($parameters);
+    $query->execute($parameters);
+    $account = $query->fetch();
 
     if ($account === false) {
       # No such account
