@@ -7,7 +7,7 @@
     <br/>
   </div>
   <div class="center">
-    <a href=""
+    <a href="/login/register"
        class="btn-large waves-effect waves-light secondary-accent">Sign Up now</a>
   </div>
   <br><br>
