@@ -25,7 +25,6 @@ class User extends Model
     }
   }
 
-  //TODO enter the name later
   public function register($name, $email, $password, $password_confirmation)
   {
     if ($password !== $password_confirmation) {
@@ -34,7 +33,7 @@ class User extends Model
 
     $sql = "INSERT INTO users (name, email, password) VALUES (:name, :email, :password)";
     $query = $this->db->prepare($sql);
-    $parameters = array(':email' => $email, ':name'=>$name, ':password'=>$password);
+    $parameters = array(':email' => $email, ':name'=>$name, ':password'=> password_hash($password, PASSWORD_BCRYPT));
 
     if(!$query->execute($parameters)){
       throw new SignUpException("Email has already been taken.");
@@ -55,7 +54,7 @@ class User extends Model
       throw new LoginException("Email/Password is invalid! Please try again");
     }
 
-    if ($account->password !== $password) {
+    if (!password_verify($password, $account->password)) {
       # Wrong password
       throw new LoginException("Email/Password is invalid! Please try again");
     }
