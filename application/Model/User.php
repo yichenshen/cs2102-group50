@@ -20,7 +20,9 @@ class User extends Model
   {
     parent::__construct();
 
-    $this->auth = new Auth($this->db);
+    if (session_status() == PHP_SESSION_NONE) {
+      session_start();
+    }
   }
 
   //TODO enter the name later
@@ -30,43 +32,52 @@ class User extends Model
       throw new SignUpException("Password does not match confirmation!");
     }
 
-    try {
-      $userId = $this->auth->register($email, $password, null);
-    } catch (InvalidEmailException $e) {
-      throw new SignUpException("Email is invalid! Please use a proper email.");
-    } catch (InvalidPasswordException $e) {
-      throw new SignUpException("Email/Password is invalid! Please try again");
-    } catch (TooManyRequestsException $e) {
-      throw new SignUpException("Login tries exceeded, try again later.");
-    } catch (UserAlreadyExistsException $e) {
+    $sql = "INSERT INTO users (name, email, password) VALUES (:name, :email, :password)";
+    $query = $this->db->prepare($sql);
+    $parameters = array(':email' => $email, ':name'=>$name, ':password'=>$password);
+
+    if($query->execute($parameters)){
       throw new SignUpException("Email has already been taken.");
     }
   }
 
-  public function login($email, $password, $persist)
+  public function login($email, $password)
   {
-    try {
-      $this->auth->login($email, $password, $persist);
-    } catch (InvalidEmailException $e) {
+    $sql = "SELECT name, email, password, admin FROM users WHERE email = :email";
+    $query = $this->db->prepare($sql);
+    $parameters = array(':email' => $email);
+
+    $account = $query->fetch($parameters);
+
+    if ($account === false) {
+      # No such account
       throw new LoginException("Email/Password is invalid! Please try again");
-    } catch (InvalidPasswordException $e) {
-      throw new LoginException("Email/Password is invalid! Please try again");
-    } catch (TooManyRequestsException $e) {
-      throw new LoginException("Login tries exceeded, try again later.");
     }
+
+    if ($account->password !== $password) {
+      # Wrong password
+      throw new LoginException("Email/Password is invalid! Please try again");
+    }
+
+    $_SESSION['login_user'] = $account;
   }
 
   public function logout()
   {
-    $this->auth->logout();
+    session_destroy();
   }
 
   public function loggedIn()
   {
-    return $this->auth->isLoggedIn();
+    return isset($_SESSION['login_user']);
   }
 
-  public function currentUserId(){
-    return $this->auth->getUserId();
+  public function currentUserEmail()
+  {
+    if(!$this->loggedIn()){
+      throw new  LoginException('No user logged in!');
+    }
+
+    return $_SESSION['login_user']->email;
   }
 }

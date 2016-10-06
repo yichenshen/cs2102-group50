@@ -30,7 +30,7 @@ class FundingsController extends ApplicationController
     $Funding = new Funding();
 
     $amount = $_POST['amount'];
-    $uid = $this->User->currentUserId();
+    $uid = $this->User->currentUserEmail();
 
     $newID = $Funding->addFunding($projectId, $uid, $amount);
 
