@@ -3,3 +3,4 @@ application/config/config.php
 mini3.iml
 
 public/uploads/*
+vendor/
