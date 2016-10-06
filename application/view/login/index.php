@@ -27,11 +27,6 @@
                 <input id="password" name="password" type="password" class="validate">
                 <label for="password">Password</label>
               </div>
-              <div class="input-field col l10 offset-l1 m12">
-                <input type="checkbox" id="remember"
-                       name="remember" <?php echo (isset($remember) && $remember) ? 'checked' : ''; ?>>
-                <label for="remember">Remember Me</label>
-              </div>
             </div>
             <br/>
             <div class="card-action">
