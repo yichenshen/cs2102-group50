@@ -39,7 +39,7 @@
         <?php } ?>
       </ul>
 
-      <div class="container">
+      <div class="search-bar hide-on-med-and-down">
         <nav class="z-depth-0 center primary-700">
           <div class="nav-wrapper">
             <form action="/project/search" method="get">

@@ -43,3 +43,8 @@
     font-size: 2rem;
     position: relative;
 }
+
+.search-bar {
+    width: 50%;
+    padding-left: 25%;
+}
