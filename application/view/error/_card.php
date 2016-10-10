@@ -4,12 +4,4 @@
   <a href="#" id="error-dismiss" class="white-text"><i class="material-icons right">clear</i></a>
 </div>
 
-<script>
-  $(function() {
-   $('#error-dismiss').click(function () {
-     $("#error-panel").fadeOut(300, function() {
-       $(this).remove();
-     });
-   });
-  });
-</script>
+<script src="/js/error.js" type="application/javascript"></script>
