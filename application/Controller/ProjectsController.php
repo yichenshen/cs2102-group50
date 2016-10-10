@@ -11,7 +11,16 @@ class ProjectsController extends ApplicationController
     $Project = new Project();
     $projects = $Project->getAllProjects();
 
-    // load views. within the views we can echo out $songs and $amount_of_songs easily
+    include APP . 'view/_templates/header.php';
+    include APP . 'view/projects/index.php';
+    include APP . 'view/_templates/footer.php';
+  }
+
+  public function show($projectId)
+  {
+    $Project = new Project();
+    $project = $Project->getProject($projectId);
+
     include APP . 'view/_templates/header.php';
     include APP . 'view/projects/index.php';
     include APP . 'view/_templates/footer.php';
