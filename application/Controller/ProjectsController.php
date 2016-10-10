@@ -22,7 +22,7 @@ class ProjectsController extends ApplicationController
     $project = $Project->getProject($projectId);
 
     include APP . 'view/_templates/header.php';
-    include APP . 'view/projects/index.php';
+    include APP . 'view/projects/show.php';
     include APP . 'view/_templates/footer.php';
   }
 
