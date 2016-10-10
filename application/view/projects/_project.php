@@ -1,15 +1,20 @@
-<div class="col s12 m6 l4">
+<div class="col s12 m6 l4" xmlns="http://www.w3.org/1999/html">
   <div class="card medium">
     <div class="card-image waves-effect waves-block waves-light">
-      <img class="activator"
-           src="<?php echo '/' . (!($project->display_image) ? 'img/filler.jpg' : $project->display_image) ?>">
+      <a href="/projects/show/<?php echo $project->id ?>">
+        <img src="<?php echo '/' . (!($project->display_image) ? 'img/filler.jpg' : $project->display_image) ?>">
+      </a>
     </div>
     <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">
-        <?php echo htmlspecialchars($project->title) ?>
-        <i class="material-icons right">more_vert</i></span>
+      <span class="card-title grey-text text-darken-4">
+        <a href="/projects/show/<?php echo $project->id ?>" class="black-text">
+          <?php echo htmlspecialchars($project->title) ?>
+        </a>
+        <a href="#" class="black-text activator">
+          <i class="material-icons right">more_vert</i>
+        </a>
+      </span>
       <p class="truncate"><?php echo htmlspecialchars($project->description) ?></p>
-      <p><a href="#">Fund this project!</a></p>
     </div>
     <div class="card-reveal secondary-300">
       <span class="card-title grey-text text-darken-4">
