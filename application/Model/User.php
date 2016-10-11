@@ -80,4 +80,13 @@ class User extends Model
 
     return $_SESSION['login_user']->email;
   }
+
+  public function currentUserName()
+  {
+    if(!$this->loggedIn()){
+      throw new  LoginException('No user logged in!');
+    }
+
+    return $_SESSION['login_user']->name;
+  }
 }

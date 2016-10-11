@@ -31,10 +31,12 @@
     <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">KACHING</a>
 
       <ul class="right hide-on-med-and-down">
-        <li><a href="/projects">Browse</a></li>
         <?php if (!$this->User->loggedIn()) { ?>
+          <li><a href="/projects">Browse</a></li>
           <li><a href="/login">Login</a></li>
         <?php } else { ?>
+          <li><a href="/admin">My Account</a></li>
+          <li><a href="/projects">Browse</a></li>
           <li><a href="/login/logout">Logout</a></li>
         <?php } ?>
       </ul>
