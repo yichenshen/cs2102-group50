@@ -27,6 +27,10 @@ class FundingsController extends ApplicationController
       return;
     }
 
+    if (!$this->User->loggedIn() || !isset($projectId)) {
+      header('Location: ' . URL);
+    }
+
     $Funding = new Funding();
 
     $amount = $_POST['amount'];

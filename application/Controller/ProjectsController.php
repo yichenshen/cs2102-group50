@@ -28,6 +28,11 @@ class ProjectsController extends ApplicationController
 
   public function newproject()
   {
+    if (!$this->User->loggedIn())
+    {
+      header('Location: ' . URL);
+    }
+
     $Project = new Project();
     $project = $Project->blankProject();
 
@@ -54,6 +59,10 @@ class ProjectsController extends ApplicationController
       return;
     }
 
+    if (!$this->User->loggedIn())
+    {
+      header('Location: ' . URL);
+    }
 
     $Project = new Project();
 
