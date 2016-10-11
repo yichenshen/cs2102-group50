@@ -2,7 +2,7 @@
 
 namespace Mini\Controller;
 
-class AdminController
+class AdminController extends ApplicationController
 {
 
   public function index()
