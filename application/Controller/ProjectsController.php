@@ -29,7 +29,7 @@ class ProjectsController extends ApplicationController
   public function newproject()
   {
     if (!$this->User->loggedIn()) {
-      header('Location: ' . URL);
+      header('Location: ' . URL . 'login');
     }
 
     $Project = new Project();
@@ -43,7 +43,7 @@ class ProjectsController extends ApplicationController
   public function edit($projectId)
   {
     if (!$this->User->loggedIn()) {
-      header('Location: ' . URL);
+      header('Location: ' . URL . 'login');
     }
 
     $Project = new Project();
@@ -68,7 +68,7 @@ class ProjectsController extends ApplicationController
     }
 
     if (!$this->User->loggedIn()) {
-      header('Location: ' . URL);
+      header('Location: ' . URL . 'login');
     }
 
     $Project = new Project();
@@ -95,7 +95,7 @@ class ProjectsController extends ApplicationController
     }
 
     if (!$this->User->loggedIn()) {
-      header('Location: ' . URL);
+      header('Location: ' . URL . 'login');
     }
 
     $Project = new Project();
@@ -125,7 +125,7 @@ class ProjectsController extends ApplicationController
     }
 
     if (!$this->User->loggedIn()) {
-      header('Location: ' . URL);
+      header('Location: ' . URL . 'login');
     }
 
     $Project = new Project();
