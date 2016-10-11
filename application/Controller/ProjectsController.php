@@ -28,8 +28,7 @@ class ProjectsController extends ApplicationController
 
   public function newproject()
   {
-    if (!$this->User->loggedIn())
-    {
+    if (!$this->User->loggedIn()) {
       header('Location: ' . URL);
     }
 
@@ -43,7 +42,16 @@ class ProjectsController extends ApplicationController
 
   public function edit($projectId)
   {
+    if (!$this->User->loggedIn()) {
+      header('Location: ' . URL);
+    }
+
     $Project = new Project();
+
+    if ($Project->isOwner($this->User->currentUserEmail(), $projectId)) {
+      header('Location:' . URL . 'error');
+    }
+
     $project = $Project->getProject($projectId);
 
     include APP . 'view/_templates/header.php';
@@ -59,8 +67,7 @@ class ProjectsController extends ApplicationController
       return;
     }
 
-    if (!$this->User->loggedIn())
-    {
+    if (!$this->User->loggedIn()) {
       header('Location: ' . URL);
     }
 
@@ -87,7 +94,15 @@ class ProjectsController extends ApplicationController
       return;
     }
 
+    if (!$this->User->loggedIn()) {
+      header('Location: ' . URL);
+    }
+
     $Project = new Project();
+
+    if ($Project->isOwner($this->User->currentUserEmail(), $projectId)) {
+      header('Location:' . URL . 'error');
+    }
 
     $title = $_POST['title'];
     $description = $_POST['description'];
@@ -104,15 +119,22 @@ class ProjectsController extends ApplicationController
   // POST
   public function delete($projectId)
   {
-    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($projectId)) {
       header('Location:' . URL . 'error');
       return;
     }
 
-    if (isset($projectId)) {
-      $Project = new Project();
-      $Project->deleteProject($projectId);
+    if (!$this->User->loggedIn()) {
+      header('Location: ' . URL);
     }
+
+    $Project = new Project();
+
+    if ($Project->isOwner($this->User->currentUserEmail(), $projectId)) {
+      header('Location:' . URL . 'error');
+    }
+
+    $Project->deleteProject($projectId);
 
     header('location: ' . URL . 'projects');
   }
@@ -132,7 +154,7 @@ class ProjectsController extends ApplicationController
       return null;
     }
 
-    if (!is_dir($target_dir) && !mkdir($target_dir)){
+    if (!is_dir($target_dir) && !mkdir($target_dir)) {
       die("Error creating folder $target_dir");
     }
 
