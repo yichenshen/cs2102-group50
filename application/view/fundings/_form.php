@@ -1,4 +1,4 @@
-<form action="<?php echo $url ?>" method="post">
+<form action="<?php echo '/fundings/create/' . $projectId ?>" method="post">
   <div class="row">
     <div class="input-field col s12">
       <i class="material-icons prefix orange-text text-accent-3">monetization_on</i>
