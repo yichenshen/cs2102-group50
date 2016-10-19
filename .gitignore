@@ -4,3 +4,5 @@ mini3.iml
 
 public/uploads/*
 vendor/
+
+composer.phar

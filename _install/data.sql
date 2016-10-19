@@ -1,5 +1,5 @@
 /* Sample SQL queries (Data inserted into tables) */
-
+/*
 INSERT INTO users (email, name) VALUES ('abc@example.com', 'abc');
 INSERT INTO users (email, name) VALUES ('john_smith@gmail.com', 'John Smith');
 INSERT INTO users (email, name) VALUES ('blackr@yahoo.com', 'Rebacca Black');
@@ -21,3 +21,4 @@ INSERT INTO fundings (id, p_id, funder, amount) VALUES
 (DEFAULT, 1, 'huawei@huawei.com', 1000);
 INSERT INTO fundings (id, p_id, funder, amount) VALUES
 (DEFAULT, 2, 'lmljanice@comp.nus.edu.com', 550);
+*/
