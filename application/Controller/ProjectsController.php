@@ -121,7 +121,7 @@ class ProjectsController extends ApplicationController
     $check = getimagesize($_FILES["displayPic"]["tmp_name"]);
 
     if (empty($check)) {
-      return "http://bearnewzealand.co.nz/wp/wp-content/uploads/2016/09/bear-05.jpg";
+      return NULL;
     }
 
     if (!is_dir($target_dir) && !mkdir($target_dir)){
