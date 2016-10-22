@@ -13,6 +13,9 @@ use Mini\Core\Model;
 
 class Project extends Model
 {
+
+  const categories = array('Art', 'Charity', 'Crafts', 'Design', 'Technology', 'Others');
+
   public function getAllProjects()
   {
     $sql = "SELECT * FROM projects";
