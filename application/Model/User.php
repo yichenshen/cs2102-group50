@@ -33,9 +33,9 @@ class User extends Model
 
     $sql = "INSERT INTO users (name, email, password) VALUES (:name, :email, :password)";
     $query = $this->db->prepare($sql);
-    $parameters = array(':email' => $email, ':name'=>$name, ':password'=> password_hash($password, PASSWORD_BCRYPT));
+    $parameters = array(':email' => $email, ':name' => $name, ':password' => password_hash($password, PASSWORD_BCRYPT));
 
-    if(!$query->execute($parameters)){
+    if (!$query->execute($parameters)) {
       throw new SignUpException("Email has already been taken.");
     }
   }
@@ -74,7 +74,7 @@ class User extends Model
 
   public function currentUserEmail()
   {
-    if(!$this->loggedIn()){
+    if (!$this->loggedIn()) {
       throw new  LoginException('No user logged in!');
     }
 
@@ -83,10 +83,20 @@ class User extends Model
 
   public function currentUserName()
   {
-    if(!$this->loggedIn()){
+    if (!$this->loggedIn()) {
       throw new  LoginException('No user logged in!');
     }
 
     return $_SESSION['login_user']->name;
+  }
+
+  public function currentIsAdmin()
+  {
+    return $this->loggedIn() && $_SESSION['login_user']->is_admin;
+  }
+
+  public function authorizeEmail($email)
+  {
+    return $this->loggedIn() && ($this->currentIsAdmin() || $this->currentUserEmail() === $email);
   }
 }
