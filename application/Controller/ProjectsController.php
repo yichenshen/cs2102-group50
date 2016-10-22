@@ -34,6 +34,7 @@ class ProjectsController extends ApplicationController
 
     $Project = new Project();
     $project = $Project->blankProject();
+    $categories = Project::categories;
 
     include APP . 'view/_templates/header.php';
     include APP . 'view/projects/new.php';
@@ -53,6 +54,7 @@ class ProjectsController extends ApplicationController
     }
 
     $project = $Project->getProject($projectId);
+    $categories = Project::categories;
 
     include APP . 'view/_templates/header.php';
     include APP . 'view/projects/edit.php';

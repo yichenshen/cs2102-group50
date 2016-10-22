@@ -14,12 +14,22 @@
       </div>
     </div>
     <div class="input-field col s12">
+      <select name="categories">
+        <option value="" disabled selected>Choose a category</option>
+        <?php foreach ($categories as $category): ?>
+          <option value="<?php echo $category; ?>"><?php echo $category; ?></option>
+        <?php endforeach; ?>
+      </select>
+      <label>Category</label>
+    </div>
+    <div class="input-field col s12">
       <textarea id="description" name="description"
                 class="materialize-textarea"><?php echo $project->description ?></textarea>
       <label for="description">Description</label>
     </div>
     <div class="input-field col s6">
-      <input id="start_date" name="start_date" type="date" class="datepicker" value="<?php echo $project->start_date ?>">
+      <input id="start_date" name="start_date" type="date" class="datepicker"
+             value="<?php echo $project->start_date ?>">
       <label for="start_date">Start Date</label>
     </div>
     <div class="input-field col s6">
@@ -30,19 +40,9 @@
       <input id="amount" name="amount" type="number" class="validate" value="<?php echo $project->amount ?>">
       <label for="amount">Target Funding (SGD)</label>
     </div>
-    <div class="input-field col s6">
-      <select name="categories">
-        <option value="" disabled selected>Choose a category</option>
-        <option value="Art">Art</option>
-        <option value="Charity">Charity</option>
-        <option value="Crafts">Crafts</option>
-        <option value="Design">Design</option>
-        <option value="Technology">Technology</option>
-      </select>
-    </div>
     <script>
-      $(document).ready(function() {
-          $('select').material_select();
+      $(document).ready(function () {
+        $('select').material_select();
       });
     </script>
   </div>
