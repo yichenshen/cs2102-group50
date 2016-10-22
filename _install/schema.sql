@@ -11,15 +11,15 @@ CREATE TABLE users (
 
 CREATE TABLE projects (
   id            SERIAL PRIMARY KEY,
-  owner         VARCHAR(256) REFERENCES users (email),
-  title         TEXT  NOT NULL,
+  owner         VARCHAR(256) REFERENCES users (email) NOT NULL,
+  title         TEXT                                  NOT NULL,
   description   TEXT,
-  start_date    DATE  NOT NULL,
-  end_date      DATE,
-  category      TEXT  NOT NULL DEFAULT 'Others' CHECK (category IN
-                                                       ('Art', 'Charity', 'Crafts', 'Design', 'Technology', 'Others')),
+  start_date    DATE                                  NOT NULL,
+  end_date      DATE                                  NOT NULL,
+  category      TEXT                                  NOT NULL DEFAULT 'Others' CHECK (category IN
+                                                                                       ('Art', 'Charity', 'Crafts', 'Design', 'Technology', 'Others')),
   display_image TEXT,
-  amount        FLOAT NOT NULL CHECK (amount > 0)
+  amount        FLOAT                                 NOT NULL CHECK (amount > 0)
 );
 
 CREATE TABLE fundings (
