@@ -10,6 +10,7 @@ class FundingsController extends ApplicationController
   {
     if (!$this->User->loggedIn() || !isset($projectId)) {
       header('Location: ' . URL);
+      return;
     }
 
     $Funding = new Funding();
@@ -29,6 +30,7 @@ class FundingsController extends ApplicationController
 
     if (!$this->User->loggedIn() || !isset($projectId)) {
       header('Location: ' . URL);
+      return;
     }
 
     $Funding = new Funding();
