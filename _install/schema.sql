@@ -16,7 +16,8 @@ CREATE TABLE projects (
   description   TEXT,
   start_date    DATE  NOT NULL,
   end_date      DATE,
-  categories    TEXT,
+  category      TEXT  NOT NULL DEFAULT 'Others' CHECK (category IN
+                                                       ('Art', 'Charity', 'Crafts', 'Design', 'Technology', 'Others')),
   display_image TEXT,
   amount        FLOAT NOT NULL CHECK (amount > 0)
 );

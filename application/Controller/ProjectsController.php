@@ -80,10 +80,10 @@ class ProjectsController extends ApplicationController
     $startDate = $_POST['start_date'] ?: date('Y/m/d');
     $endDate = $_POST['end_date'] ?: date('Y/m/d');
     $amount = $_POST['amount'] ?: 1;
-    $categories = $_POST['categories'] ?: "Others";
+    $category = $_POST['category'] ?: "Others";
 
     //TODO: fill up empty fields.
-    $newID = $Project->addProject(null, $title, $description, $startDate, $endDate, $categories, $amount);
+    $newID = $Project->addProject(null, $title, $description, $startDate, $endDate, $category, $amount);
     $displayPic = $this->uploadFile($newID);
     $Project->changeDisplay($newID, $displayPic);
 
@@ -112,10 +112,10 @@ class ProjectsController extends ApplicationController
     $startDate = $_POST['start_date'];
     $endDate = $_POST['end_date'];
     $amount = $_POST['amount'];
-    $categories = $_POST['categories'];
+    $category = $_POST['category'];
 
     //TODO: fill up empty fields.
-    $newID = $Project->updateProject(null, $title, $description, $startDate, $endDate, $categories, $amount, $projectID);
+    $newID = $Project->updateProject(null, $title, $description, $startDate, $endDate, $category, $amount, $projectID);
 
     header('Location:' . URL . 'projects/');
   }

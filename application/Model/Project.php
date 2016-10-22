@@ -29,12 +29,12 @@ class Project extends Model
     return $query->fetchAll();
   }
 
-  public function addProject($owner, $title, $description, $startDate, $endDate, $categories, $amount)
+  public function addProject($owner, $title, $description, $startDate, $endDate, $category, $amount)
   {
-    $sql = "INSERT INTO projects (owner, title, description, start_date, end_date, categories, amount) VALUES (:owner, :title, :description, :startDate, :endDate, :categories, :amount)";
+    $sql = "INSERT INTO projects (owner, title, description, start_date, end_date, category, amount) VALUES (:owner, :title, :description, :startDate, :endDate, :category, :amount)";
     $query = $this->db->prepare($sql);
 
-    $parameters = array(':owner' => $owner, ':title' => $title, ':description' => $description, ':startDate' => $startDate, ':endDate' => $endDate, ':categories' => $categories, ':amount' => $amount);
+    $parameters = array(':owner' => $owner, ':title' => $title, ':description' => $description, ':startDate' => $startDate, ':endDate' => $endDate, ':category' => $category, ':amount' => $amount);
 
     // useful for debugging: you can see the SQL behind above construction by using:
     // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
@@ -84,12 +84,12 @@ class Project extends Model
     return $query->fetch();
   }
 
-  public function updateProject($owner, $title, $description, $start_date, $end_date, $categories, $amount, $id)
+  public function updateProject($owner, $title, $description, $start_date, $end_date, $category, $amount, $id)
   {
-    $sql = "UPDATE projects SET owner = :owner, title = :title, description = :description, start_date = :start_date, end_date = :end_date, categories = :categories, amount = :amount WHERE id = :id";
+    $sql = "UPDATE projects SET owner = :owner, title = :title, description = :description, start_date = :start_date, end_date = :end_date, category = :category, amount = :amount WHERE id = :id";
     $query = $this->db->prepare($sql);
 
-    $parameters = array(':owner' => $owner, ':title' => $title, ':description' => $description, ':start_date' => $start_date, ':end_date' => $end_date, ':categories' => $categories, ':amount' => $amount, ':id' => $id);
+    $parameters = array(':owner' => $owner, ':title' => $title, ':description' => $description, ':start_date' => $start_date, ':end_date' => $end_date, ':categories' => $category, ':amount' => $amount, ':id' => $id);
 
     // useful for debugging: you can see the SQL behind above construction by using:
     // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
@@ -117,7 +117,7 @@ class Project extends Model
     $project->description = null;
     $project->start_date = null;
     $project->end_date = null;
-    $project->categories = null;
+    $project->category = null;
     $project->amount = null;
 
     return $project;
