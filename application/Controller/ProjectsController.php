@@ -30,6 +30,7 @@ class ProjectsController extends ApplicationController
   {
     if (!$this->User->loggedIn()) {
       header('Location: ' . URL . 'login');
+      return;
     }
 
     $Project = new Project();
@@ -45,12 +46,14 @@ class ProjectsController extends ApplicationController
   {
     if (!$this->User->loggedIn()) {
       header('Location: ' . URL . 'login');
+      return;
     }
 
     $Project = new Project();
 
     if ($Project->isOwner($this->User->currentUserEmail(), $projectId)) {
       header('Location:' . URL . 'error');
+      return;
     }
 
     $project = $Project->getProject($projectId);
@@ -71,6 +74,7 @@ class ProjectsController extends ApplicationController
 
     if (!$this->User->loggedIn()) {
       header('Location: ' . URL . 'login');
+      return;
     }
 
     $Project = new Project();
@@ -83,7 +87,7 @@ class ProjectsController extends ApplicationController
     $category = $_POST['category'] ?: "Others";
 
     //TODO: fill up empty fields.
-    $newID = $Project->addProject(null, $title, $description, $startDate, $endDate, $category, $amount);
+    $newID = $Project->addProject($this->User->currentUserEmail(), $title, $description, $startDate, $endDate, $category, $amount);
     $displayPic = $this->uploadFile($newID);
     $Project->changeDisplay($newID, $displayPic);
 
@@ -99,12 +103,14 @@ class ProjectsController extends ApplicationController
 
     if (!$this->User->loggedIn()) {
       header('Location: ' . URL . 'login');
+      return;
     }
 
     $Project = new Project();
 
-    if ($Project->isOwner($this->User->currentUserEmail(), $projectId)) {
+    if ($Project->isOwner($this->User->currentUserEmail(), $projectID)) {
       header('Location:' . URL . 'error');
+      return;
     }
 
     $title = $_POST['title'];
@@ -115,7 +121,7 @@ class ProjectsController extends ApplicationController
     $category = $_POST['category'];
 
     //TODO: fill up empty fields.
-    $newID = $Project->updateProject(null, $title, $description, $startDate, $endDate, $category, $amount, $projectID);
+    $newID = $Project->updateProject($title, $description, $startDate, $endDate, $category, $amount, $projectID);
 
     header('Location:' . URL . 'projects/');
   }
@@ -130,12 +136,14 @@ class ProjectsController extends ApplicationController
 
     if (!$this->User->loggedIn()) {
       header('Location: ' . URL . 'login');
+      return;
     }
 
     $Project = new Project();
 
     if ($Project->isOwner($this->User->currentUserEmail(), $projectId)) {
       header('Location:' . URL . 'error');
+      return;
     }
 
     $Project->deleteProject($projectId);
@@ -158,7 +166,7 @@ class ProjectsController extends ApplicationController
       return NULL;
     }
 
-    if (!is_dir($target_dir) && !mkdir($target_dir)){
+    if (!is_dir($target_dir) && !mkdir($target_dir)) {
       die("Error creating folder $target_dir");
     }
 

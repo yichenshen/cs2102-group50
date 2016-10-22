@@ -84,12 +84,12 @@ class Project extends Model
     return $query->fetch();
   }
 
-  public function updateProject($owner, $title, $description, $start_date, $end_date, $category, $amount, $id)
+  public function updateProject($title, $description, $start_date, $end_date, $category, $amount, $id)
   {
-    $sql = "UPDATE projects SET owner = :owner, title = :title, description = :description, start_date = :start_date, end_date = :end_date, category = :category, amount = :amount WHERE id = :id";
+    $sql = "UPDATE projects SET title = :title, description = :description, start_date = :start_date, end_date = :end_date, category = :category, amount = :amount WHERE id = :id";
     $query = $this->db->prepare($sql);
 
-    $parameters = array(':owner' => $owner, ':title' => $title, ':description' => $description, ':start_date' => $start_date, ':end_date' => $end_date, ':categories' => $category, ':amount' => $amount, ':id' => $id);
+    $parameters = array(':title' => $title, ':description' => $description, ':start_date' => $start_date, ':end_date' => $end_date, ':category' => $category, ':amount' => $amount, ':id' => $id);
 
     // useful for debugging: you can see the SQL behind above construction by using:
     // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
