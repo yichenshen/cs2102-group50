@@ -2,7 +2,7 @@
   <div class="card medium">
     <div class="card-image waves-effect waves-block waves-light">
       <a href="/projects/show/<?php echo $project->id ?>">
-        <img src="<?php echo (!($project->display_image) ? '/img/filler.jpg' : $project->display_image) ?>">
+        <img src="<?php echo $project->display_image ?: '/img/filler.jpg' ?>">
       </a>
     </div>
     <div class="card-content">

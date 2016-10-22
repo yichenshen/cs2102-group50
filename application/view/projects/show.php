@@ -1,6 +1,6 @@
 <div class="container">
 
-  <img class="materialboxed centered-image" width="800" src="<?php echo (!($project->display_image) ? '/img/filler.jpg' : $project->display_image) ?>">
+  <img class="materialboxed centered-image" width="800" src="<?php echo $project->display_image ?: '/img/filler.jpg' ?>">
 
   <h1><?php echo $project->title ?></h1>
 
