@@ -2,7 +2,7 @@
   <div class="card medium">
     <div class="card-image waves-effect waves-block waves-light">
       <a href="/projects/show/<?php echo $project->id ?>">
-        <img src="<?php echo '/' . (!($project->display_image) ? 'img/filler.jpg' : $project->display_image) ?>">
+        <img src="<?php echo (!($project->display_image) ? '/img/filler.jpg' : $project->display_image) ?>">
       </a>
     </div>
     <div class="card-content">
@@ -22,7 +22,7 @@
         <i class="material-icons right">close</i></span>
       <p>From <?php echo htmlspecialchars($project->start_date) ?>
         to <?php echo htmlspecialchars($project->end_date) ?></p>
-      <p>Funding Sought: <?php echo htmlspecialchars($project->amount) ?></p>
+      <p>Funding Sought: <?php echo htmlspecialchars($project->amount) ?> SGD</p>
       <p><?php echo nl2br(htmlspecialchars($project->description)) ?></p>
     </div>
 

@@ -78,9 +78,10 @@ class ProjectsController extends ApplicationController
     $startDate = $_POST['start_date'] ?: date('Y/m/d');
     $endDate = $_POST['end_date'] ?: date('Y/m/d');
     $amount = $_POST['amount'] ?: 1;
+    $categories = $_POST['categories'] ?: "Others";
 
     //TODO: fill up empty fields.
-    $newID = $Project->addProject(null, $title, $description, $startDate, $endDate, null, $amount);
+    $newID = $Project->addProject(null, $title, $description, $startDate, $endDate, $categories, $amount);
     $displayPic = $this->uploadFile($newID);
     $Project->changeDisplay($newID, $displayPic);
 
@@ -109,9 +110,10 @@ class ProjectsController extends ApplicationController
     $startDate = $_POST['start_date'];
     $endDate = $_POST['end_date'];
     $amount = $_POST['amount'];
+    $categories = $_POST['categories'];
 
     //TODO: fill up empty fields.
-    $newID = $Project->updateProject(null, $title, $description, $startDate, $endDate, null, $amount, $projectID);
+    $newID = $Project->updateProject(null, $title, $description, $startDate, $endDate, $categories, $amount, $projectID);
 
     header('Location:' . URL . 'projects/');
   }
@@ -151,15 +153,15 @@ class ProjectsController extends ApplicationController
     $check = getimagesize($_FILES["displayPic"]["tmp_name"]);
 
     if (empty($check)) {
-      return null;
+      return NULL;
     }
 
-    if (!is_dir($target_dir) && !mkdir($target_dir)) {
+    if (!is_dir($target_dir) && !mkdir($target_dir)){
       die("Error creating folder $target_dir");
     }
 
     if (move_uploaded_file($_FILES["displayPic"]["tmp_name"], $target_file)) {
-      return $target_file;
+      return "/" . $target_file;
     } else {
       echo "Sorry, there was an error uploading your file.";
     }

@@ -26,11 +26,27 @@
       <input id="end_date" name="end_date" type="date" class="datepicker" value="<?php echo $project->end_date ?>">
       <label for="amount">End Date</label>
     </div>
+    <div class="input-field col s6">
+      <input id="amount" name="amount" type="number" class="validate" value="<?php echo $project->amount ?>">
+      <label for="amount">Target Funding (SGD)</label>
+    </div>
+    <div class="input-field col s6">
+      <select name="categories">
+        <option value="" disabled selected>Choose a category</option>
+        <option value="Art">Art</option>
+        <option value="Charity">Charity</option>
+        <option value="Crafts">Crafts</option>
+        <option value="Design">Design</option>
+        <option value="Technology">Technology</option>
+      </select>
+    </div>
+    <script>
+      $(document).ready(function() {
+          $('select').material_select();
+      });
+    </script>
   </div>
-  <div class="input-field col s6">
-    <input id="amount" name="amount" type="number" class="validate" value="<?php echo $project->amount ?>">
-    <label for="amount">Target Funding (SGD)</label>
-  </div>
+
 
   <button type="submit" class="btn right secondary2-accent">Submit</button>
 </form>
