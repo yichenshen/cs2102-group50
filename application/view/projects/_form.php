@@ -3,7 +3,7 @@
     <div class="input-field col s12">
       <input id="title" name="title" type="text" class="validate" value="<?php echo $project->title ?>">
       <label for="title">Project Title</label>
-    </div>   2007.yichen@gmail.com
+    </div>
     <div class="file-field input-field col s12">
       <div class="btn secondary-accent">
         <span>Display Image</span>
@@ -15,9 +15,14 @@
     </div>
     <div class="input-field col s12">
       <select name="category">
-        <option value="" disabled <?php if (!$project->category) { echo 'selected'; }; ?> >Choose a category</option>
+        <option value="" disabled <?php if (!$project->category) {
+          echo 'selected';
+        }; ?> >Choose a category
+        </option>
         <?php foreach ($categories as $category): ?>
-          <option value="<?php echo $category; ?>"><?php echo $category; ?></option>
+          <option value="<?php echo $category; ?>" <?php if ($project->category === $category) {
+            echo 'selected';
+          }; ?>><?php echo $category; ?></option>
         <?php endforeach; ?>
       </select>
       <label>Category</label>
