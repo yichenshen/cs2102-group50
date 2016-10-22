@@ -25,21 +25,5 @@
       <p>Funding Sought: <?php echo htmlspecialchars($project->amount) ?> SGD</p>
       <p><?php echo nl2br(htmlspecialchars($project->description)) ?></p>
     </div>
-
-    <!--    <div class="card-action">-->
-    <!--      <div class="right">-->
-    <!--        <form action="/projects/delete/--><?php //echo $project->id ?><!--" method="post">-->
-    <!--          <a class="btn-floating primary-accent" href="/fundings/--><?php //echo $project->id ?><!--">-->
-    <!--            <i class="material-icons">attach_money</i>-->
-    <!--          </a>-->
-    <!--          <a class="btn-floating light-green" href="/projects/edit/--><?php //echo $project->id ?><!--">-->
-    <!--            <i class="material-icons">edit</i>-->
-    <!--          </a>-->
-    <!--          <button class="btn-floating red accent-2" type="submit" name="action">-->
-    <!--            <i class="material-icons">delete</i>-->
-    <!--          </button>-->
-    <!--        </form>-->
-    <!--      </div>-->
-    <!--    </div>-->
   </div>
 </div>
