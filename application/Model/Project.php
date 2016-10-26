@@ -72,7 +72,7 @@ class Project extends Model
 
   public function ofOwner($email)
   {
-    $sql = "SELECT p.*, SUM(f.amount) AS amount_raised FROM projects p, fundings f WHERE p.id = f.project_id AND owner = :email GROUP BY p.id";
+    $sql = "SELECT p.*, SUM(f.amount) AS amount_raised FROM projects p LEFT JOIN fundings f ON p.id = f.project_id WHERE owner = :email GROUP BY p.id";
     $query = $this->db->prepare($sql);
     $parameters = array(':email' => $email);
 
