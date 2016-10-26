@@ -23,6 +23,7 @@ class FundingsController extends ApplicationController
 
   public function create($projectId)
   {
+
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
       header('Location:' . URL . 'error');
       return;

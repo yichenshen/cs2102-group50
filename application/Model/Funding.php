@@ -28,12 +28,12 @@ class Funding extends Model
   }
 
   //TODO check for prescene of project
-  public function addFunding($projectId, $uid, $amount)
+  public function addFunding($projectId, $email, $amount)
   {
-    $sql = "INSERT INTO fundings (projects_id, funder_id, amount) VALUES (:pid, :uid, :amount)";
+    $sql = "INSERT INTO fundings (project_id, funder, amount) VALUES (:pid, :email, :amount)";
     $query = $this->db->prepare($sql);
 
-    $parameters = array(':pid' => $projectId, ':uid' => $uid, ':amount' => $amount);
+    $parameters = array(':pid' => $projectId, ':email' => $email, ':amount' => $amount);
     $query->execute($parameters);
 
     return $this->db->lastInsertId('fundings_id_seq');
