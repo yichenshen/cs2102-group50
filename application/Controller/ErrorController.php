@@ -24,4 +24,13 @@ class ErrorController extends ApplicationController
         require APP . 'view/error/index.php';
         require APP . 'view/_templates/footer.php';
     }
+
+    public function notfound()
+    {
+      $error_msg = 'Page does not exist!';
+
+      require APP . 'view/_templates/header.php';
+      require APP . 'view/error/index.php';
+      require APP . 'view/_templates/footer.php';
+    }
 }

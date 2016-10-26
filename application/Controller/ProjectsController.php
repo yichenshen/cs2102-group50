@@ -21,6 +21,11 @@ class ProjectsController extends ApplicationController
     $Project = new Project();
     $project = $Project->getProject($projectId);
 
+    if (!$project) {
+      header('Location: ' . URL . 'error/notfound');
+      return;
+    }
+
     include APP . 'view/_templates/header.php';
     include APP . 'view/projects/show.php';
     include APP . 'view/_templates/footer.php';
