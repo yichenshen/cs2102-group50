@@ -20,7 +20,7 @@
   <div class="divider"></div>
 
   <?php foreach ($projects as $project) {
-    include APP . 'view/projects/_project.php';
+    include APP . 'view/projects/_stats.php';
   } ?>
 
 </div>
