@@ -23,6 +23,7 @@
 
   <?php if ($this->User->loggedIn()) { ?>
     <h3>Contribute!</h3>
+    <?php $url = '/fundings/create/' . $project->id ?>
     <?php include APP . 'view/fundings/_form.php' ?>
   <?php } else { ?>
     <br/>
