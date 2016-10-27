@@ -18,19 +18,18 @@
       <h2 class="center amber-text text-darken-3"><i class="material-icons large">lightbulb_outline</i></h2>
       <h5 class="center">Realise your dream</h5>
 
-      <p class="light">Aliquam finibus, urna at convallis ultrices, lacus magna sodales metus,
-        at molestie augue urna nec sapien. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
-        turpis egestas. Sed ornare urna ex. Ut dignissim, mauris nec efficitur commodo, dui enim elementum ante, ut
-        iaculis purus augue quis turpis.</p>
+      <p class="light">Have you got a lifelong dream or project that you had always wanted to accomplish but unable to do so?
+        With Kaching!, you can now create your own unique project, and with the help of generous funders, you are on your way to realise
+        this dream of yours.</p>
     </div>
 
     <div class="col s12 m4">
       <h2 class="center blue-text"><i class="material-icons large">trending_up</i></h2>
       <h5 class="center">Grow your project</h5>
 
-      <p class="light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras condimentum, lorem sit amet semper
-        faucibus, risus felis bibendum dolor, tincidunt congue ipsum eros nec nulla. Duis risus quam, pharetra porta
-        iaculis posuere, fringilla iaculis orci.</p>
+      <p class="light">Kaching! has a long standing history since August 2016, and til date nearly 5000 projects have been created with
+        an average funding amount of $2938 per project. We believe that your project will receive substantial amount from kind funders
+      to make it happen.</p>
     </div>
 
     <div class="col s12 m4">
@@ -38,9 +37,8 @@
         <h2 class="center green-text"><i class="material-icons large">track_changes</i></h2>
         <h5 class="center">Moniter your progress</h5>
 
-        <p class="light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras condimentum, lorem sit amet semper
-          faucibus, risus felis bibendum dolor, tincidunt congue ipsum eros nec nulla. Duis risus quam, pharetra porta
-          iaculis posuere, fringilla iaculis orci</p>
+        <p class="light">With every project, you are able to keep track of the funding that has been contributed by the members
+        . Every contribution will be reflected almost immediately so that you can have access to the funding you need in no time.</p>
       </div>
     </div>
   </div>
