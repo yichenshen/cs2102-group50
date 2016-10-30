@@ -19,6 +19,7 @@ class ErrorController extends ApplicationController
      */
     public function index()
     {
+        $error_msg = 'Something went wrong, please try again later.';
         // load views
         require APP . 'view/_templates/header.php';
         require APP . 'view/error/index.php';
