@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
 
-  <title>Crowd</title>
+  <title>KACHING!</title>
 
   <!-- JS -->
   <!-- please note: The JavaScript files are loaded in the footer to speed up page construction -->
