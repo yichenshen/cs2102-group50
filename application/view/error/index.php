@@ -1,3 +1,3 @@
 <div class="container">
-    <p><?php echo $error_msg || 'An error has occured, please try again later.' ?></p>
+    <h2><?php echo isset($error_msg) ? $error_msg : 'An error has occurred, please try again later.' ?></h2>
 </div>
