@@ -1,36 +1,29 @@
 <?php
 
-/**
- * Class Error
- *
- * Please note:
- * Don't use the same name for class and method, as this might trigger an (unintended) __construct of the class.
- * This is really weird behaviour, but documented here: http://php.net/manual/en/language.oop5.decon.php
- *
- */
-
 namespace Mini\Controller;
 
 class ErrorController extends ApplicationController
 {
-    /**
-     * PAGE: index
-     * This method handles the error page that will be shown when a page is not found
-     */
-    public function index()
-    {
-        // load views
-        require APP . 'view/_templates/header.php';
-        require APP . 'view/error/index.php';
-        require APP . 'view/_templates/footer.php';
-    }
 
-    public function notfound()
-    {
-      $error_msg = 'Page does not exist!';
+  public function index()
+  {
+    // load views
+    require APP . 'view/_templates/header.php';
+    require APP . 'view/error/index.php';
+    require APP . 'view/_templates/footer.php';
+  }
 
-      require APP . 'view/_templates/header.php';
-      require APP . 'view/error/index.php';
-      require APP . 'view/_templates/footer.php';
-    }
+  public function notfound()
+  {
+    $error_msg = 'Page does not exist!';
+
+    $this->index();
+  }
+
+  public function unauthorized()
+  {
+    $error_msg = 'You are not authorized to perform this action!';
+
+    $this->index();
+  }
 }
