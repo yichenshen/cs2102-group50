@@ -93,7 +93,7 @@ class Project extends Model
     return $query->fetchAll();
   }
 
-  public function isOwner($email, $projectId)
+  public function getOwner($projectId)
   {
     $sql = "SELECT owner FROM projects WHERE id = :projectId";
     $query = $this->db->prepare($sql);
@@ -101,9 +101,7 @@ class Project extends Model
     $parameters = array(':projectId' => $projectId);
     $query->execute($parameters);
 
-    $owner = $query->fetch()->owner;
-
-    return $owner === $email;
+    return $query->fetch()->owner;;
   }
 
   public function blankProject()
