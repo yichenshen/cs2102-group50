@@ -7,11 +7,11 @@
     </div>
     <div class="card-content">
       <span class="card-title grey-text text-darken-4">
-        <a href="/projects/show/<?php echo $project->id ?>" class="black-text">
-          <?php echo htmlspecialchars($project->title) ?>
-        </a>
         <a href="#" class="black-text activator">
           <i class="material-icons right">more_vert</i>
+        </a>
+        <a href="/projects/show/<?php echo $project->id ?>" class="black-text truncate">
+          <?php echo htmlspecialchars($project->title) ?>
         </a>
       </span>
       <?php
