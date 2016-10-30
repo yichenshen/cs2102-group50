@@ -6,7 +6,7 @@
         <div class="card">
           <div class="card-image primary-500">
             <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" height="130"/>
-            <span class="card-title"><h3>Welcome back!</h3></span>
+            <span class="card-title"><h3>Welcome to KACHING!</h3></span>
           </div>
           <div class="card-content">
             <div class="row">
