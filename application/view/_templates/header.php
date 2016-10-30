@@ -46,7 +46,7 @@
           <div class="nav-wrapper">
             <form action="/projects/search" method="get">
               <div class="input-field">
-                <input id="search" type="search" name="search" placeholder="Search Projects">
+                <input id="search" type="search" name="search" placeholder="Search Projects" value="<?php echo isset($search) ? $search : "" ?>">
                 <label for="search"><i class="material-icons">search</i></label>
                 <i class="material-icons">close</i>
               </div>

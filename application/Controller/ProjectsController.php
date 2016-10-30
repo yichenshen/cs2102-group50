@@ -33,10 +33,10 @@ class ProjectsController extends ApplicationController
 
   public function search()
   {
-    $term = $_GET['search'];
+    $search = $_GET['search'];
 
     $Project = new Project();
-    $projects = $Project->searchProjects($term);
+    $projects = $Project->searchProjects($search);
 
     include APP . 'view/_templates/header.php';
     include APP . 'view/projects/index.php';
