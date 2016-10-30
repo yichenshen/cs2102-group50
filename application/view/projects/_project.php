@@ -14,18 +14,17 @@
           <i class="material-icons right">more_vert</i>
         </a>
       </span>
-      <p>Ends: <?php echo htmlspecialchars($project->end_date) ?></p>
       <?php
       $progress = ($project->amount_raised ?: 0) / ($project->amount) * 100;
       ?>
-
-      <div class="progress">
-        <div class="determinate primary-700" style="width: <?php echo $progress > 100 ? 100 : $progress; ?>%"></div>
-      </div>
       <p>
         $<?php echo($project->amount_raised ?: 0) ?>/$<?php echo $project->amount; ?>
         (<?php echo $progress; ?>%)
       </p>
+      <div class="progress">
+        <div class="determinate primary-700" style="width: <?php echo $progress > 100 ? 100 : $progress; ?>%"></div>
+      </div>
+
     </div>
     <div class="card-reveal secondary-300">
       <span class="card-title grey-text text-darken-4">
