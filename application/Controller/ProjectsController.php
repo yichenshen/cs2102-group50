@@ -31,6 +31,18 @@ class ProjectsController extends ApplicationController
     include APP . 'view/_templates/footer.php';
   }
 
+  public function search()
+  {
+    $term = $_GET['search'];
+
+    $Project = new Project();
+    $projects = $Project->searchProjects($term);
+
+    include APP . 'view/_templates/header.php';
+    include APP . 'view/projects/index.php';
+    include APP . 'view/_templates/footer.php';
+  }
+
   public function newproject()
   {
     if (!$this->User->loggedIn()) {
