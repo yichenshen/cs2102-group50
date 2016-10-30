@@ -17,13 +17,14 @@
       <?php
       $progress = ($project->amount_raised ?: 0) / ($project->amount) * 100;
       ?>
+      <p>Ends: <?php echo htmlspecialchars($project->end_date) ?></p>
+      <div class="progress">
+        <div class="determinate primary-700" style="width: <?php echo $progress > 100 ? 100 : $progress; ?>%"></div>
+      </div>
       <p>
         $<?php echo($project->amount_raised ?: 0) ?>/$<?php echo $project->amount; ?>
         (<?php echo $progress; ?>%)
       </p>
-      <div class="progress">
-        <div class="determinate primary-700" style="width: <?php echo $progress > 100 ? 100 : $progress; ?>%"></div>
-      </div>
 
     </div>
     <div class="card-reveal secondary-300">
