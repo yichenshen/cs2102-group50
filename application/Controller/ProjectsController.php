@@ -68,8 +68,8 @@ class ProjectsController extends ApplicationController
 
     $Project = new Project();
 
-    if ($Project->isOwner($this->User->currentUserEmail(), $projectId)) {
-      header('Location:' . URL . 'error');
+    if (!($this->User->authorizeEmail($Project->getOwner($projectId)))) {
+      header('Location:' . URL . 'error/unauthorized');
       return;
     }
 
@@ -111,7 +111,7 @@ class ProjectsController extends ApplicationController
     header('Location:' . URL . 'projects/');
   }
 
-  public function update($projectID)
+  public function update($projectId)
   {
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
       header('Location:' . URL . 'error');
@@ -125,8 +125,8 @@ class ProjectsController extends ApplicationController
 
     $Project = new Project();
 
-    if ($Project->isOwner($this->User->currentUserEmail(), $projectID)) {
-      header('Location:' . URL . 'error');
+    if (!($this->User->authorizeEmail($Project->getOwner($projectId)))) {
+      header('Location:' . URL . 'error/unauthorized');
       return;
     }
 
@@ -138,7 +138,7 @@ class ProjectsController extends ApplicationController
     $category = $_POST['category'];
 
     //TODO: fill up empty fields.
-    $newID = $Project->updateProject($title, $description, $startDate, $endDate, $category, $amount, $projectID);
+    $newID = $Project->updateProject($title, $description, $startDate, $endDate, $category, $amount, $projectId);
 
     header('Location:' . URL . 'projects/');
   }
@@ -157,8 +157,7 @@ class ProjectsController extends ApplicationController
     }
 
     $Project = new Project();
-
-    if ($Project->isOwner($this->User->currentUserEmail(), $projectId)) {
+    if (!($this->User->authorizeEmail($Project->getOwner($projectId)))) {
       header('Location:' . URL . 'error');
       return;
     }
