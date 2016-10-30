@@ -11,7 +11,7 @@ class Project extends Model
 
   public function getAllProjects()
   {
-    $sql = "SELECT * FROM projects";
+    $sql = "SELECT p.*, SUM(f.amount) AS amount_raised FROM projects p LEFT JOIN fundings f ON p.id = f.project_id GROUP BY p.id";
     $query = $this->db->prepare($sql);
     $query->execute();
 
