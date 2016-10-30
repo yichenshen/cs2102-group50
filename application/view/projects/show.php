@@ -6,9 +6,16 @@
 
   <?php if ($this->User->authorizeEmail($project->owner)): ?>
     <div class="right">
-      <a class="btn btn-floating btn-large primary-accent-dark" href="/projects/edit/<?php echo $project->id; ?>">
-        <i class="material-icons">edit</i>
-      </a>
+      <form action="/projects/delete/<?php echo $project->id; ?>" method="post">
+        <a class="btn btn-floating btn-large primary-accent-dark" href="/projects/edit/<?php echo $project->id; ?>">
+
+          <i class="material-icons">edit</i>
+        </a>
+        <button type="submit" class="btn btn-floating btn-large red accent-2">
+          <i class="material-icons">delete</i>
+        </button>
+
+      </form>
     </div>
   <?php endif ?>
   <h1><?php echo $project->title ?></h1>
