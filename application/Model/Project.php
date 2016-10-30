@@ -18,6 +18,18 @@ class Project extends Model
     return $query->fetchAll();
   }
 
+  public function searchProjects($term)
+  {
+    $sql = "SELECT p.*, SUM(f.amount) AS amount_raised FROM projects p LEFT JOIN fundings f ON p.id = f.project_id WHERE title LIKE :term1 OR description LIKE :term2 OR category LIKE :term3 GROUP BY p.id";
+    $query = $this->db->prepare($sql);
+
+    $parameters = array(':term1' => '%' . $term . '%', ':term2' => '%' . $term . '%', ':term3' => '%' . $term . '%');
+
+    $query->execute($parameters);
+
+    return $query->fetchAll();
+  }
+
   public function addProject($owner, $title, $description, $startDate, $endDate, $category, $amount)
   {
     $sql = "INSERT INTO projects (owner, title, description, start_date, end_date, category, amount) VALUES (:owner, :title, :description, :startDate, :endDate, :category, :amount)";

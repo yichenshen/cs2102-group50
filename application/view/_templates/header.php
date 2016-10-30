@@ -44,9 +44,9 @@
       <div class="search-bar hide-on-med-and-down">
         <nav class="z-depth-0 center primary-700">
           <div class="nav-wrapper">
-            <form action="/project/search" method="get">
+            <form action="/projects/search" method="get">
               <div class="input-field">
-                <input id="search" type="search" required placeholder="Search Projects">
+                <input id="search" type="search" name="search" required placeholder="Search Projects">
                 <label for="search"><i class="material-icons">search</i></label>
                 <i class="material-icons">close</i>
               </div>
