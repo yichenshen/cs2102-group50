@@ -20,6 +20,10 @@
   <?php endif ?>
   <h1><?php echo $project->title ?></h1>
 
+  <h5>
+    <?php echo $project->category ?>
+  </h5>
+  <br />
   <p>
     From <?php echo $project->start_date ?> to <?php echo $project->end_date ?>
   </p>

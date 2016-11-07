@@ -10,6 +10,7 @@
         </a>
       </span>
 
+      <span class="new badge secondary-700" data-badge-caption="<?php echo $project->category ?>"></span>
       <br/>
       Progress:
       $<?php echo($project->amount_raised ?: 0) ?>/$<?php echo $project->amount; ?>
