@@ -22,6 +22,7 @@
         }
     },
     "require": {
-        "respect/validation": "^1.1"
+        "respect/validation": "^1.1",
+        "fzaninotto/faker": "^1.6"
     }
 }
