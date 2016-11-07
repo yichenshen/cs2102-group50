@@ -14,6 +14,7 @@
           <?php echo htmlspecialchars($project->title) ?>
         </a>
       </span>
+      <span class="new badge secondary-500" data-badge-caption="<?php echo $project->category ?>"></span>
       <?php
       $progress = ($project->amount_raised ?: 0) / ($project->amount) * 100;
       ?>
@@ -25,6 +26,7 @@
         $<?php echo($project->amount_raised ?: 0) ?>/$<?php echo $project->amount; ?>
         (<?php echo $progress; ?>%)
       </p>
+
 
     </div>
     <div class="card-reveal secondary-300">
