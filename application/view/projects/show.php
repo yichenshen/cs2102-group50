@@ -28,7 +28,7 @@
     From <?php echo $project->start_date ?> to <?php echo $project->end_date ?>
   </p>
 
-  <p><?php echo $project->description ?></p>
+  <p><?php echo nl2br(htmlspecialchars($project->description)) ?></p>
 
   <div class="divider"></div>
 
