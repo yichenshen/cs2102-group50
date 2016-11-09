@@ -42,7 +42,7 @@ for ($x = 0; $x < NUM_PROJECTS; $x++) {
 
   $category = Project::categories[array_rand(Project::categories)];
 
-  $Project->addProject(
+  $id = $Project->addProject(
     $email,
     $faker->catchPhrase,
     $faker->paragraphs(3, true),
@@ -50,4 +50,8 @@ for ($x = 0; $x < NUM_PROJECTS; $x++) {
     $end_date,
     $category,
     rand(1, 1000) * 1000);
+
+  $displayPic = $faker->imageUrl(1000, 600);
+
+  $Project->changeDisplay($id, $displayPic);
 }
