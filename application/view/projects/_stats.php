@@ -1,4 +1,4 @@
-<div class="card horizontal primary-300">
+<div class="card horizontal primary-200">
   <div class="card-image">
     <div class="pie-chart">
       <canvas class="pie-canvas"
@@ -18,16 +18,16 @@
 
       <span class="new badge secondary-700" data-badge-caption="<?php echo $project->category ?>"></span>
       <br/>
+      <b>
       Progress:
       $<?php echo($project->amount_raised ?: 0) ?>/$<?php echo $project->amount; ?>
       (<?php
       $progress = ($project->amount_raised ?: 0) / ($project->amount) * 100;
       echo $progress;
       ?>%)
-      <div class="progress">
-        <div class="determinate primary-700" style="width: <?php echo $progress > 100 ? 100 : $progress; ?>%"></div>
-      </div>
-
+      </b>
+      <br />
+      <br />
       <p><?php echo nl2br(htmlspecialchars($project->description)) ?></p>
     </div>
     <div class="card-action">
