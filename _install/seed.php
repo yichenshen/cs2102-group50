@@ -2,6 +2,7 @@
 
 define('NUM_USERS', 50);
 define('NUM_PROJECTS', 100);
+define('MAX_FUNDERS', 5);
 
 define('ROOT', dirname(__DIR__) . DIRECTORY_SEPARATOR);
 define('APP', ROOT . 'application' . DIRECTORY_SEPARATOR);
@@ -26,7 +27,7 @@ $Funding = new Funding();
 
 $emails = array();
 
-echo "Seeding users\r\n";
+echo "Seeding Users\r\n";
 for ($x = 0; $x < NUM_USERS; $x++) {
   $email = $faker->email;
   $User->register($faker->name, $email, $email, $email);
@@ -34,13 +35,16 @@ for ($x = 0; $x < NUM_USERS; $x++) {
   array_push($emails, $email);
 }
 
-echo "Seeding projects\r\n";
+$pids = array();
+
+echo "Seeding Projects\r\n";
 for ($x = 0; $x < NUM_PROJECTS; $x++) {
   $email = $emails[array_rand($emails)];
   $start_date = $faker->dateTimeBetween($startDate = 'now', $endDate = '+1 month')->format('Y/m/d');
   $end_date = $faker->dateTimeBetween($startDate = 'now', $endDate = '+1 month')->format('Y/m/d');
 
   $category = Project::categories[array_rand(Project::categories)];
+  $amount = rand(1, 1000) * 1000;
 
   $id = $Project->addProject(
     $email,
@@ -49,9 +53,30 @@ for ($x = 0; $x < NUM_PROJECTS; $x++) {
     $start_date,
     $end_date,
     $category,
-    rand(1, 1000) * 1000);
+    $amount);
 
   $displayPic = $faker->imageUrl(1000, 600);
 
   $Project->changeDisplay($id, $displayPic);
+
+  $pids[$id] = $amount;
 }
+
+echo "Seeding Fundings\r\n";
+foreach ($pids as $pid => $amount) {
+  $funded = rand(0, $amount);
+  $funders = rand(1, 5);
+
+  $cutoffs = array(0);
+
+  for ($i = 0; $i < $funders; $i++) {
+    array_push($cutoffs, rand(10, $amount));
+  }
+
+  sort($cutoffs);
+
+  for ($i = 1; $i < sizeof($cutoffs); $i++) {
+    $Funding->addFunding($pid, $emails[array_rand($emails)], $cutoffs[$i] - $cutoffs[$i - 1]);
+  }
+}
+
