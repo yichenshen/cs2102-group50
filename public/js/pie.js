@@ -1,31 +1,36 @@
 (function ($) {
-  $(function () {
-    var data = {
-      labels: [
-        "Red",
-        "Blue",
-      ],
-      datasets: [
-        {
-          data: [300, 50],
-          backgroundColor: [
-            "#FF6384",
-            "#36A2EB",
-          ],
-          hoverBackgroundColor: [
-            "#FF6384",
-            "#36A2EB",
-          ]
-        }],
-      options: {
-        responsive: true
-      }
-    };
+  var data = {
+    labels: [
+      "Raised",
+      "Needed",
+    ],
+    datasets: [
+      {
+        backgroundColor: [
+          "#FFA000",
+          "#2196F3",
+        ],
+        hoverBackgroundColor: [
+          "#ffc107",
+          "#64B5F6",
+        ]
+      }]
+  };
 
-    var ctx = $('.pie-canvas')[0];
-    var myPieChart = new Chart(ctx, {
-      type: 'doughnut',
-      data: data
+  $(function () {
+
+    $('.pie-canvas').each(function (index, elem) {
+      var total = $(elem).data('total');
+      var amount = $(elem).data('amount');
+
+      data.datasets[0].data = [amount, total - amount];
+
+      console.log(data);
+
+      new Chart(elem, {
+        type: 'doughnut',
+        data: data
+      });
     });
   });
 }(jQuery));

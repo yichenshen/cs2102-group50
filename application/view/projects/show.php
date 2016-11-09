@@ -25,7 +25,11 @@
   <br/>
   <div class="row">
     <div class="pie-chart col s12 m4 l3">
-      <canvas class="pie-canvas" height="300"></canvas>
+      <canvas class="pie-canvas"
+              height="300"
+              data-total="<?php echo $project->amount ?>"
+              data-amount="<?php echo($project->amount_raised ?: 0) ?>">
+      </canvas>
     </div>
     <p>
       <b>
@@ -53,4 +57,4 @@
 
 </div>
 
-<script src="<?php echo URL; ?>js/pie.js"></script>
+<script src="<?php echo URL; ?>js/pie.js" async></script>
