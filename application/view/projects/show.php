@@ -43,7 +43,9 @@
 
   <div class="clear"></div>
 
-  <?php if ($this->User->loggedIn()) { ?>
+  <?php if ($this->User->loggedIn() && $this->User->authorizeEmail($project->owner)) { ?>
+    <?php include APP . 'view/fundings/_list.php' ?>
+  <?php } elseif ($this->User->loggedIn()) { ?>
     <h3>Contribute!</h3>
     <?php $url = '/fundings/create/' . $project->id ?>
     <?php include APP . 'view/fundings/_form.php' ?>

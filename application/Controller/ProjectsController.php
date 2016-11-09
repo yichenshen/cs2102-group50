@@ -3,6 +3,7 @@
 namespace Mini\Controller;
 
 use Mini\Model\Project;
+use Mini\Model\Funding;
 
 class ProjectsController extends ApplicationController
 {
@@ -24,6 +25,11 @@ class ProjectsController extends ApplicationController
     if (!$project) {
       header('Location: ' . URL . 'error/notfound');
       return;
+    }
+
+    if ($this->User->loggedIn() && $this->User->authorizeEmail($project->owner)){
+      $Funding = new Funding();
+      $fundings = $Funding->fundingsForProject($projectId);
     }
 
     include APP . 'view/_templates/header.php';
