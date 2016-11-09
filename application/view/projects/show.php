@@ -3,7 +3,6 @@
   <img class="materialboxed centered-image"
        src="<?php echo $project->display_image ?: '/img/filler.jpg' ?>">
 
-
   <?php if ($this->User->authorizeEmail($project->owner)): ?>
     <div class="right">
       <form action="/projects/delete/<?php echo $project->id; ?>" method="post">
@@ -23,14 +22,21 @@
   <h5>
     <?php echo $project->category ?>
   </h5>
-  <br />
-  <p>
-    From <?php echo $project->start_date ?> to <?php echo $project->end_date ?>
-  </p>
+  <br/>
+  <div class="row">
+    <div class="pie-chart col s12 m4 l3">
+      <canvas class="pie-canvas" height="300"></canvas>
+    </div>
+    <p>
+      <b>
+        From <?php echo $project->start_date ?> to <?php echo $project->end_date ?>
+      </b>
+    </p>
 
-  <p><?php echo nl2br(htmlspecialchars($project->description)) ?></p>
+    <p><?php echo nl2br(htmlspecialchars($project->description)) ?></p>
+  </div>
 
-  <div class="divider"></div>
+  <div class="clear"></div>
 
   <?php if ($this->User->loggedIn()) { ?>
     <h3>Contribute!</h3>
@@ -46,3 +52,5 @@
   <?php } ?>
 
 </div>
+
+<script src="<?php echo URL; ?>js/pie.js"></script>

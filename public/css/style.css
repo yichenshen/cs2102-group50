@@ -38,7 +38,7 @@
     background-color: #00b0ff !important;
 }
 
-.material-icons.icon-align{
+.material-icons.icon-align {
     top: 0.6rem;
     font-size: 2rem;
     position: relative;
@@ -56,4 +56,14 @@
     width: 100%;
     max-height: 400px;
     object-fit: cover;
+}
+
+.clear {
+    clear: both;
+}
+
+.pie-chart {
+    float: left;
+    margin-right: 1em;
+    margin-bottom: 2em;
 }
