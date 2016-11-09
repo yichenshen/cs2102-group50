@@ -57,7 +57,16 @@ for ($x = 0; $x < NUM_PROJECTS; $x++) {
 
   $displayPic = $faker->imageUrl(1000, 600);
 
-  $Project->changeDisplay($id, $displayPic);
+  $target_dir = "/uploads/" . $id . "/";
+  if (!is_dir($target_dir)) {
+    mkdir('public/' . $target_dir);
+  }
+
+  $path = $target_dir . $id . '.jpg';
+
+  file_put_contents('public' . $path, fopen($displayPic, 'r'));
+
+  $Project->changeDisplay($id, $path);
 
   $pids[$id] = $amount;
 }
