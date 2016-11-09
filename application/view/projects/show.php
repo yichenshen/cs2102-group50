@@ -18,6 +18,7 @@
     </div>
   <?php endif ?>
   <h2><?php echo $project->title ?></h2>
+  <h5>By: <?php echo $project->owner_name ?></h5>
 
   <div class="divider"></div>
 

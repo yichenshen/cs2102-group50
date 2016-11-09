@@ -63,7 +63,7 @@ class Project extends Model
 
   public function getProject($id)
   {
-    $sql = "SELECT p.*, SUM(f.amount) AS amount_raised FROM projects p LEFT JOIN fundings f ON p.id = f.project_id WHERE p.id = :id GROUP BY p.id LIMIT 1";
+    $sql = "SELECT p.*, SUM(f.amount) AS amount_raised, u.name AS owner_name FROM projects p JOIN users u ON u.email = p.owner LEFT JOIN fundings f ON p.id = f.project_id WHERE p.id = :id GROUP BY p.id, u.email LIMIT 1";
     $query = $this->db->prepare($sql);
     $parameters = array(':id' => $id);
 
