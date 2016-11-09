@@ -2,7 +2,7 @@
 
   <img class="materialboxed centered-image"
        src="<?php echo $project->display_image ?: '/img/filler.jpg' ?>">
-
+  <br/>
   <?php if ($this->User->authorizeEmail($project->owner)): ?>
     <div class="right">
       <form action="/projects/delete/<?php echo $project->id; ?>" method="post">
@@ -33,9 +33,18 @@
     <div class="chip secondary-300">
       <?php echo $project->category ?>
     </div>
-      <b>
-        From <?php echo $project->start_date ?> to <?php echo $project->end_date ?>
-      </b>
+    <b>
+      From <?php echo $project->start_date ?> to <?php echo $project->end_date ?>
+    </b>
+    <br />
+    <b>
+      Progress:
+      $<?php echo($project->amount_raised ?: 0) ?>/$<?php echo $project->amount; ?>
+      (<?php
+      $progress = ($project->amount_raised ?: 0) / ($project->amount) * 100;
+      echo $progress;
+      ?>%)
+    </b>
     </p>
 
     <p><?php echo nl2br(htmlspecialchars($project->description)) ?></p>
@@ -47,6 +56,7 @@
     <?php include APP . 'view/fundings/_list.php' ?>
   <?php } elseif ($this->User->loggedIn()) { ?>
     <h3>Contribute!</h3>
+    <div class="divider"></div>
     <?php $url = '/fundings/create/' . $project->id ?>
     <?php include APP . 'view/fundings/_form.php' ?>
   <?php } else { ?>
