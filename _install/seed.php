@@ -26,10 +26,28 @@ $Funding = new Funding();
 
 $emails = array();
 
-echo "Seeding users";
-for ($x = 0; $x <= 50; $x++) {
+echo "Seeding users\r\n";
+for ($x = 0; $x < NUM_USERS; $x++) {
   $email = $faker->email;
   $User->register($faker->name, $email, $email, $email);
 
   array_push($emails, $email);
+}
+
+echo "Seeding projects\r\n";
+for ($x = 0; $x < NUM_PROJECTS; $x++) {
+  $email = $emails[array_rand($emails)];
+  $start_date = $faker->dateTimeBetween($startDate = 'now', $endDate = '+1 month')->format('Y/m/d');
+  $end_date = $faker->dateTimeBetween($startDate = 'now', $endDate = '+1 month')->format('Y/m/d');
+
+  $category = Project::categories[array_rand(Project::categories)];
+
+  $Project->addProject(
+    $email,
+    $faker->catchPhrase,
+    $faker->paragraphs(3, true),
+    $start_date,
+    $end_date,
+    $category,
+    rand(1, 1000) * 1000);
 }
