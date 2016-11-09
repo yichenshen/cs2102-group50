@@ -1,6 +1,6 @@
 <div class="container">
 
-  <img class="materialboxed centered-image" width="800"
+  <img class="materialboxed centered-image"
        src="<?php echo $project->display_image ?: '/img/filler.jpg' ?>">
 
 
