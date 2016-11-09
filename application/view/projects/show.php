@@ -17,12 +17,10 @@
       </form>
     </div>
   <?php endif ?>
-  <h1><?php echo $project->title ?></h1>
+  <h2><?php echo $project->title ?></h2>
 
-  <h5>
-    <?php echo $project->category ?>
-  </h5>
-  <br/>
+  <div class="divider"></div>
+
   <div class="row">
     <div class="pie-chart col s12 m4 l3">
       <canvas class="pie-canvas"
@@ -32,6 +30,9 @@
       </canvas>
     </div>
     <p>
+    <div class="chip secondary-300">
+      <?php echo $project->category ?>
+    </div>
       <b>
         From <?php echo $project->start_date ?> to <?php echo $project->end_date ?>
       </b>
