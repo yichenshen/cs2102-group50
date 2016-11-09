@@ -9,7 +9,7 @@ class Funding extends Model
 
   public function fundingsForProject($project_id)
   {
-    $sql = "SELECT * FROM fundings WHERE project_id = :pid";
+    $sql = "SELECT * FROM fundings f, users u WHERE f.funder = u.email AND project_id = :pid";
     $query = $this->db->prepare($sql);
     $parameters = array(':pid' => $project_id);
 

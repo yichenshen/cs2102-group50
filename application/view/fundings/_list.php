@@ -4,12 +4,14 @@
   <thead>
   <tr>
     <th>Funder</th>
+    <th>Email</th>
     <th>Amount</th>
   </tr>
   </thead>
   <tbody>
   <?php foreach ($fundings as $funding): ?>
     <tr>
+      <td><?php echo $funding->name ?></td>
       <td><?php echo $funding->funder ?></td>
       <td>$<?php echo $funding->amount ?></td>
     </tr>
@@ -17,6 +19,7 @@
   </tbody>
   <tfoot>
     <th>Total:</th>
+    <th></th>
     <th>$<?php echo $project->amount_raised ?></th>
   </tfoot>
 </table>
