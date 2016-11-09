@@ -1,10 +1,12 @@
 <div class="card horizontal primary-300">
   <div class="card-image">
-    <canvas class="pie-canvas"
-            height="300"
-            data-total="<?php echo $project->amount ?>"
-            data-amount="<?php echo($project->amount_raised ?: 0) ?>">
-    </canvas>
+    <div class="pie-chart">
+      <canvas class="pie-canvas"
+              height="300"
+              data-total="<?php echo $project->amount ?>"
+              data-amount="<?php echo($project->amount_raised ?: 0) ?>">
+      </canvas>
+    </div>
   </div>
   <div class="card-stacked">
     <div class="card-content">
