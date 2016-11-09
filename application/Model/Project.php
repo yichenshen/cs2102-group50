@@ -20,7 +20,7 @@ class Project extends Model
 
   public function searchProjects($term)
   {
-    $sql = "SELECT p.*, SUM(f.amount) AS amount_raised FROM projects p LEFT JOIN fundings f ON p.id = f.project_id WHERE title LIKE :term1 OR description LIKE :term2 OR category LIKE :term3 GROUP BY p.id";
+    $sql = "SELECT p.*, SUM(f.amount) AS amount_raised FROM projects p LEFT JOIN fundings f ON p.id = f.project_id WHERE title ILIKE :term1 OR description ILIKE :term2 OR category ILIKE :term3 GROUP BY p.id";
     $query = $this->db->prepare($sql);
 
     $parameters = array(':term1' => '%' . $term . '%', ':term2' => '%' . $term . '%', ':term3' => '%' . $term . '%');
@@ -63,7 +63,7 @@ class Project extends Model
 
   public function getProject($id)
   {
-    $sql = "SELECT * FROM projects WHERE id = :id LIMIT 1";
+    $sql = "SELECT *, SUM(f.amount) AS amount_raised FROM projects p LEFT JOIN fundings f ON p.id = f.project_id WHERE id = :id LIMIT 1";
     $query = $this->db->prepare($sql);
     $parameters = array(':id' => $id);
 
@@ -116,5 +116,4 @@ class Project extends Model
 
     return $project;
   }
-
 }
