@@ -24,3 +24,4 @@
   } ?>
 
 </div>
+<script src="<?php echo URL; ?>js/pie.js" async></script>

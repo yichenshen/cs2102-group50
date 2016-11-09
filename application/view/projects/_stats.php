@@ -1,6 +1,10 @@
 <div class="card horizontal primary-300">
   <div class="card-image">
-    <img src="<?php echo $project->display_image ?: '/img/filler.jpg' ?>">
+    <canvas class="pie-canvas"
+            height="300"
+            data-total="<?php echo $project->amount ?>"
+            data-amount="<?php echo($project->amount_raised ?: 0) ?>">
+    </canvas>
   </div>
   <div class="card-stacked">
     <div class="card-content">
@@ -15,15 +19,14 @@
       Progress:
       $<?php echo($project->amount_raised ?: 0) ?>/$<?php echo $project->amount; ?>
       (<?php
-        $progress = ($project->amount_raised ?: 0) / ($project->amount) * 100;
-        echo $progress;
+      $progress = ($project->amount_raised ?: 0) / ($project->amount) * 100;
+      echo $progress;
       ?>%)
       <div class="progress">
         <div class="determinate primary-700" style="width: <?php echo $progress > 100 ? 100 : $progress; ?>%"></div>
       </div>
-      <p>
-        <?php echo $project->description; ?>
-      </p>
+
+      <p><?php echo nl2br(htmlspecialchars($project->description)) ?></p>
     </div>
     <div class="card-action">
       <a href="/projects/show/<?php echo $project->id ?>" class="btn secondary-accent">
