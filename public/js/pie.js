@@ -15,19 +15,19 @@
             data: [amount, total - amount],
             backgroundColor: [
               "#ff8f00",
-              "#2196F3"
+              "#9e9e9e"
             ],
             borderColor: [
               "#ff8f00",
-              "#2196F3"
+              "#9e9e9e"
             ],
             hoverBorderColor: [
               "#ffb300",
-              "#64B5F6"
+              "#bdbdbd "
             ],
             hoverBackgroundColor: [
               "#ffb300",
-              "#64B5F6"
+              "#bdbdbd"
             ]
           }]
       };
