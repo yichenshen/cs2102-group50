@@ -9,6 +9,9 @@
   <!-- JS -->
   <!-- please note: The JavaScript files are loaded in the footer to speed up page construction -->
   <!-- See more here: http://stackoverflow.com/q/2105327/1114320 -->
+  <script src="<?php echo URL; ?>bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript"
+          src="<?php echo URL; ?>bower_components/chart.js/dist/Chart.min.js"></script>
 
   <!-- CSS -->
   <link href="<?php echo URL; ?>css/style.css" rel="stylesheet">
@@ -22,8 +25,6 @@
 
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-  <script src="<?php echo URL; ?>bower_components/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
 <header>
@@ -46,7 +47,8 @@
           <div class="nav-wrapper">
             <form action="/projects/search" method="get">
               <div class="input-field">
-                <input id="search" type="search" name="search" placeholder="Search Projects" value="<?php echo isset($search) ? $search : "" ?>">
+                <input id="search" type="search" name="search" placeholder="Search Projects"
+                       value="<?php echo isset($search) ? $search : "" ?>">
                 <label for="search"><i class="material-icons">search</i></label>
                 <i class="material-icons">close</i>
               </div>
