@@ -18,7 +18,7 @@
               "#2196F3"
             ],
             borderColor: [
-              "#ff8f00 ",
+              "#ff8f00",
               "#2196F3"
             ],
             hoverBorderColor: [
